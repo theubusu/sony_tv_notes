@@ -17,6 +17,8 @@ EMMA3TL2 For:
 * KDL-55EX500 / EX503 / EX505 / EX710 / EX711 / EX713 / EX715
 * KDL-60EX700 / EX703 / EX705
 
+Both are MIPS-based CPUs.
+
 ## NAND
 Either:
 - 2x64MB TSOP48 NAND chips (interleaved, more in `NAND.md`)
