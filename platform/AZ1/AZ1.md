@@ -19,12 +19,23 @@ EMMA3TL2 For:
 
 Both are MIPS-based CPUs.
 
+## Kernel
+`2.6.23.17-alp_nl-`   
+`Linux version 2.6.23.17-alp_nl- (root@slave113) (gcc version 4.1.2 20090526 (Sony CE Linux 5.0.3.0)) #1 Tue Nov 18 20:35:25 JST 2014` (nx805)
+
 ## NAND
 Either:
 - 2x64MB TSOP48 NAND chips (interleaved, more in `NAND.md`)
-- 1x128MB OneNAND BGA52 chip
+- 1x128MB OneNAND BGA63 chip
 
 The NAND is not encrypted.
 
 ## Sources
 2 NAND dumps: KDL-40NX700 and KDL-40NX805. Both are on EMMA3TH CPU, and the 2x64MB NAND setup.
+
+## GUI
+XMB+NSX
+
+## Useful
+- dumps of file `release.version` from both NAND dumps and also from below logs in the folder with same name
+- various UART logs from https://acassis.wordpress.com/2011/08/08/log_sony_bravia/ and https://acassis.wordpress.com/2014/10/08/more-sony-kdl-32ex405-logs/ in `logs.txt`
