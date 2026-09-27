@@ -65,11 +65,6 @@ ___key_descramble(_iv,derived,0xcf50262f,0x6c85d4db,0x567b2808,0xe1abf139,0x19f1
 ```
 
 ### So where's the key?
-Getting the key relies on having access to the bootloader variables of the device. Which means either rooting it and getting it from Linux, or from bootloader shell.    
-It could be possible to also try to decompile/reverse engineer the bootloader but I have failed to do so (see `bootloader.md`)
-
-### Note of `serial`
-If `serial` is the serial number of the device, then that would mean that every device would recieve a different decryption key! That makes no sense! Right, it doesn't, so these are the possibilites i think there are here:
-- Each device also has a different `frzkey` especially calculated with the serial to then turn into the common key
-- The bootloader sends the `frzkey` to the device obfuscated using the serial, and it needs to be undone on the Linux side
-- `serial` doesn't actually mean the TV's serial number
+Getting the key relies on having access to the bootloader variables of the device. Which means either rooting it and getting it from Linux, or from bootloader shell.   
+We can get `serial` from NAND, but having just that does not help.    
+The required key material for `frzkey` wasn't able to be retrieved by static analysis of the bootloader. (see `bootloader.md`)

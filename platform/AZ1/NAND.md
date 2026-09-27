@@ -3,6 +3,8 @@ This describes the NAND setup of the models with 2 seperate 64MB TSOP48 chips.
 
 The 2 NANDs are interleaved byte-by-byte, and also have a FTL system, where the logical block is encoded in the OOB area of both NAND's. Check `tool/emma_ftl.py` script for the exact logic.
 
+The bootloader is stored solely in NAND1.
+
 The bootloader and other weird blocks at the start are ignored by the FTL, to linux device `/dev/nanda`, only the data portion is provided.
 
 The resulting data is a DOS partition table containing one UVFAT16 partition.
@@ -26,7 +28,7 @@ The partition is also mounted on `/NAND`
 The FAT partition contains the following in the root:
 | name          | purpose |
 |---------------|---------|
-|.environment|Possibly stores env variables|
+|.environment|Stores environment variables|
 |.factory2.adj|Unknown|
 |MS|Mountpoint for memory stick|
 |SQBIN.IMG|Squashfs image of `/bin`|

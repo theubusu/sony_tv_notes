@@ -10,3 +10,18 @@ Basic FRZ extractor/parser in `tool/frz_new.py`
 
 ## Format
 The FRZ file is consists of multiple sections, each section starts with a 9 byte header:
+
+## Chunktypes dirty note
+`0xf1` - raw data, XORed   
+`0xf2` - LZSS compressed, XORed   
+`0xf3` - sets entry point, XORed
+
+`0xf4` - raw data, no XOR   
+`0xf5` - LZSS compressed, no XOR  
+`0xf6` - sets entry point, no XOR   
+
+### new format
+
+`0xf7` - new frz raw chunk, new frz start marker   
+`0xf8` - new frz LZSS compressed chunk    
+`0xf9` - sets entry point, ends file    
