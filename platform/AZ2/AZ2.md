@@ -1,7 +1,7 @@
 # AZ2 platform (2011)
 
 ## SoC
-CXD4727GB
+CXD4727GB "X-Reality"
 - Kernel mach: `ayubrd`
 - Service manual name: `X-Reality`   
 
@@ -13,7 +13,7 @@ MIPS cpu. specifics unknown
 ## NAND
 - 256MB BGA63 OneNAND
 
-There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA52 is expensive). Therefore, its not known whether the NAND is encrypted.
+There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA63 is expensive). Therefore, its not known whether the NAND is encrypted.
 
 ## GUI
 NUX, introduced with this platform

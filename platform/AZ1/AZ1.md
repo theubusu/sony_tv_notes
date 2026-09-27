@@ -1,14 +1,15 @@
 # AZ1 platform (2010)
 
-## SoC - EMMA3T series
+## SoC
+NEC/Renesas EMMA3T series   
 ([Source](https://www.avforums.com/threads/lcd-matrices-differences-and-what-models-are-placed.1113353/page-10))
 
-EMMA3TH For:
+EMMA3TH For (AZ1H):
 * KDL-40NX700 / NX703 / NX705 / NX800 / NX803 / NX805
 * KDL-46NX700 / NX703 / NX705
 * KDL-52NX800 / NX803 / NX805
 
-EMMA3TL2 For:
+EMMA3TL2 For (AZ1L):
 * KDL-32EX403 / EX500 / EX501 / EX503 / EX505 / EX508 / EX603 / EX605 / EX700 / EX701 / EX703 / EX705 / EX706 / EX707 / EX709 / EX710 / EX711 / EX713 / EX715 / EX716 / EX717 / EX719 / NX503
 * KDL-37EX403 / EX500 / EX503 / EX505
 * KDL-40EX403 / EX500 / EX501 / EX503 / EX505 / EX508 / EX603 / EX605 / EX700 / EX701 / EX703 / EX705 / EX706 / EX707 / EX708 / EX709 / EX710 / EX711 / EX713 / EX715 / EX716 / EX717 / EX718 / EX719 / HX700 / HX701 / HX703 / HX705 / NX503
@@ -17,7 +18,7 @@ EMMA3TL2 For:
 * KDL-55EX500 / EX503 / EX505 / EX710 / EX711 / EX713 / EX715
 * KDL-60EX700 / EX703 / EX705
 
-Both are MIPS-based CPUs.
+Both are MIPS-based CPUs. Check `emma3tl2.pdf` datasheet for more info.
 
 ## Kernel
 `2.6.23.17-alp_nl-`   
@@ -25,13 +26,13 @@ Both are MIPS-based CPUs.
 
 ## NAND
 Either:
-- 2x64MB TSOP48 NAND chips (interleaved, more in `NAND.md`)
+- 2x64MB TSOP48 NAND chips (interleaved, more in `NAND.md`, possibly this was used only on the EMMA3TH models)
 - 1x128MB OneNAND BGA63 chip
 
 The NAND is not encrypted.
 
-## Sources
-2 NAND dumps: KDL-40NX700 and KDL-40NX805. Both are on EMMA3TH CPU, and the 2x64MB NAND setup.
+## UART
+UART should be enabled on this platform as seen the logs published online.
 
 ## GUI
 XMB+NSX
@@ -39,3 +40,6 @@ XMB+NSX
 ## Useful
 - dumps of file `release.version` from both NAND dumps and also from below logs in the folder with same name
 - various UART logs from https://acassis.wordpress.com/2011/08/08/log_sony_bravia/ and https://acassis.wordpress.com/2014/10/08/more-sony-kdl-32ex405-logs/ in `logs.txt`
+
+## Sources
+2 NAND dumps: KDL-40NX700 and KDL-40NX805. Both are on EMMA3TH CPU, and the 2x64MB NAND setup.
