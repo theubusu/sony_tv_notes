@@ -36,6 +36,13 @@ Build: LSDK4510
 |User JavaScript folder|/sony/usr/sony/bin/$OPERA_DIR/userjs|
 |User styles folder|/dev/shm/opera_dir/mystyles|
 
+## SEN/BIVL
+Indexes(EU): https://applicast.ga.sony.net/WsIndexes/AZ3_EU.xml
+
+Interesting note:
+- https://github.com/CFSworks/nimue/issues/6
+Apparent bypass of widget signatures and run from USB. I wasn't able to confirm this.
+
 ## OSS
 Listing (latest saved): https://web.archive.org/web/20191019180723/http://oss.sony.net/Products/Linux/TV/KDL-55HX75G.html   
 Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/qNe4FQvq2i_B0gV8BTteCw/linux-kernel.tgz) [Backup](https://s1.theubusu.xyz/0/uploads/sony%20kernels/2012_AZ3.tgz)

@@ -6,7 +6,7 @@
 |WF	        |Wireless firmware|
 |DF	        |Digital Firmware|
 |YM         |Unknown|
-|M5		    |Bootloader|
+|M		    |Bootloader|
 |DD	        |NVM Data|
 |PK         |Unknown|
 |AM		    |Android|
