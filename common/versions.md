@@ -2,11 +2,12 @@
 
 | Prefix    | Meaning |
 | --------  | -------- |
-|DM		    |Digital software|
-|WF	        |Wireless firmware|
+|DM		    |Digital(main) software|
+|WF	        |Wireless firmware ?|
 |DF	        |Digital Firmware|
+|DB         |Digital Boot/Bootloader|
 |YM         |Unknown|
-|M		    |Bootloader|
+|M		    |Bootloader/Monitor|
 |DD	        |NVM Data|
 |PK         |Unknown|
 |AM		    |Android|

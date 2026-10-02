@@ -47,6 +47,24 @@ Apparent bypass of widget signatures and run from USB. I wasn't able to confirm 
 Listing (latest saved): https://web.archive.org/web/20191019180723/http://oss.sony.net/Products/Linux/TV/KDL-55HX75G.html   
 Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/qNe4FQvq2i_B0gV8BTteCw/linux-kernel.tgz) [Backup](https://s1.theubusu.xyz/0/uploads/sony%20kernels/2012_AZ3.tgz)
 
+## PKG
+| pkg       | dest | id      |
+| --------  | ---------- |---------- |
+| EUA       | DVB-AEP-TC_BASE, DVB-AEP-TC_NO-NOR, DVB-AEP-T2_NO-NOR, DVB-AEP-S2_BASE, DVB-AEP-C2_BASE, DVB-AEP-T2_BASE, DVB-AEP-C2_NO-NOR       |sony_dtv0FA20A02A0A2_00001100|
+| EUB       | DVB-AEP-T2_MHP, DVB-AEP-C2_MHP   						|sony_dtv0FA20A02A0A2_00011100|
+| GAA       | DVB-TW_BASE, DVB-GA-T_BASE, DVB-GA-T_NO-NU, DTMB-HK_BASE, DVB-LTN_BASE      |sony_dtv0FA20A02A0A2_00001201|
+| GAB       | DVB-GA-T_NO-SKY, DVB-GA-T_NO-SKNU        						|? |
+| GAC       | DTMB-CN_BASE |?|
+| AAA       | ATSC-KR_BASE, ATSC-LTN_BASE, ATSC-UC_BASE      			|sony_dtv0FA20A02A0A2_00001301|
+| BRA       | ISDB-LTN_BASE       						|sony_dtv0FA20A02A0A2_00001400 |
+| BRB       | ISDB-LTN_NO-GIN     						|sony_dtv0FA20A02A0A2_00011400 |
+| JPA       | ISDB-JP_BASE        						|sony_dtv0FA20A02A0A2_00001500|
+
+### High-end TV
+| pkg       | dest | id      |
+| --------  | ---------- |---------- |
+| EUG | ? | sony_dtv0FA20A03A0A3_00071100 |
+| AAZ | ? | sony_dtv0FA20A03A0A3_00061301 |
 
 ## Sources
 KDL-55HX850
