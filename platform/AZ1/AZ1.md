@@ -36,6 +36,7 @@ UART should be enabled on this platform as seen the logs published online.
 
 ## GUI
 XMB+NSX
+- [Sony Monolithic TV Interface](http://www.jongaiser.net/pj_monolith.html)
 
 ## Useful
 - dumps of file `release.version` from both NAND dumps and also from below logs in the folder with same name

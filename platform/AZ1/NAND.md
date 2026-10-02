@@ -40,4 +40,6 @@ The FAT partition contains the following in the root:
 |VAR|Writable data directory|
 |VMLINUX.FRZ|Linux kernel image|
 
+- As the name suggests(or not), the `SQFIXED` partition is not changed by firmware upgrades, and is always at factory state.
+
 Note that the squashfs partitions or kernel don't seem to be signed in any obvious way
