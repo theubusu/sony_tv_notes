@@ -2,21 +2,8 @@
 
 ## SoC
 NEC/Renesas EMMA3T series   
-([Source](https://www.avforums.com/threads/lcd-matrices-differences-and-what-models-are-placed.1113353/page-10))
-
-EMMA3TH For (AZ1H):
-* KDL-40NX700 / NX703 / NX705 / NX800 / NX803 / NX805
-* KDL-46NX700 / NX703 / NX705
-* KDL-52NX800 / NX803 / NX805
-
-EMMA3TL2 For (AZ1L):
-* KDL-32EX403 / EX500 / EX501 / EX503 / EX505 / EX508 / EX603 / EX605 / EX700 / EX701 / EX703 / EX705 / EX706 / EX707 / EX709 / EX710 / EX711 / EX713 / EX715 / EX716 / EX717 / EX719 / NX503
-* KDL-37EX403 / EX500 / EX503 / EX505
-* KDL-40EX403 / EX500 / EX501 / EX503 / EX505 / EX508 / EX603 / EX605 / EX700 / EX701 / EX703 / EX705 / EX706 / EX707 / EX708 / EX709 / EX710 / EX711 / EX713 / EX715 / EX716 / EX717 / EX718 / EX719 / HX700 / HX701 / HX703 / HX705 / NX503
-* KDL-46EX403 / EX500 / EX501 / EX503 / EX505 / EX700 / EX701/ EX703 / EX705 / EX706 / EX707 / EX708 / EX709 / EX710 / EX711 / EX713 / EX715 / EX716 / EX717 / EX718 / EX719 / HX700 / HX703 / HX705
-* KDL-52EX700 / EX703 / EX705
-* KDL-55EX500 / EX503 / EX505 / EX710 / EX711 / EX713 / EX715
-* KDL-60EX700 / EX703 / EX705
+- EMMA3TH For AZ1H
+- EMMA3TL2 For AZ1L
 
 Both are MIPS-based CPUs. Check `emma3tl2.pdf` datasheet for more info.
 
@@ -32,7 +19,13 @@ Either:
 The NAND is not encrypted.
 
 ## UART
-UART should be enabled on this platform as seen the logs published online.
+UART should be enabled on this platform as seen the logs published online, and will output the kernel log, unknown if any input is possible.
+
+## Bootloader
+See `bootloader.md`
+
+## Firmware
+See `firmware.md`
 
 ## GUI
 XMB+NSX

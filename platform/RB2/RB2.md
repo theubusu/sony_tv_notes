@@ -1,14 +1,21 @@
-# RB2 platform (2014)
-Most information from RB1 should apply, the SoC used is the same.
+# RB2 platform (2014/2015)
+SoC information from RB1 should apply, the same are used.
 
 ## NAND/eMMC
 - 1GB TSOP48 NAND
-- 2GB(?) eMMC
+- 4GB eMMC THGBMAG5A1JBAIR (in ENH mode(?), so data capacity is actually 2GB)
 
 eMMC seems to be used on some higher-end models. In both cases, they are fully encrypted.
 
+RB2T chassis seems to use 2 4GB eMMC's. One of them is mostly empty, its probably used for extra storage
+
+### 2Mb SPI-ROM(SerialNorFlash) for eMMC boot
+In case of eMMC device, it will boot from an external SPI flash. The flash contains a small 0x1200 encrypted blob, which possiblys sets up the eMMC, and continues the boot from there.
+
 ## Android
 This platform also has Android sub-system. It’s probably the same as in RB1, but wasn’t checked since i don’t have an RB2 TV.
+
+Additionally seems to have an Android media player app.
 
 ## GUI
 Internally also called „Genome” like in RB1, but its a different full-screen style menu, with panel navigation.
@@ -31,3 +38,9 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/xsu
 | BRA       | ISDB-LTN_BASE       						|? |
 | BRB       | ISDB-LTN_NO-GIN     						|? |
 | JPA       | ISDB-JP_BASE        						|?|
+
+## FMP-X5/FMP-X10
+These two 2014 4K media player models use the Ayu2 CPU and the RB2 software. FMP-X10 used the `AAQ` PKG, but firmware is nowhere to be found now.
+
+## Notes/Useful
+- Level 3 Confidential Service manual for RB2G - contains UART/JTAG pinouts, board schematic and connections of AYU2L(So also useful for RB1) - http://televid-sib.org/index.php?topic=22363.msg148626#msg148626
