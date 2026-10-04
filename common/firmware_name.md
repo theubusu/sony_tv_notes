@@ -31,9 +31,27 @@ minor = 0x0000
 Note: the name of bin file does not matter at least in AZ1, it will choose the first .bin file in the folder
 
 ## update ID's
-- AZ1  `0FA00A00A0A0`
-- AZ2  `0FA10A01A0A1`
-- AZ3  `0FA20A02A0A2`
-- AZ3  `0FA20A03A0A3` (hiend model)
-- RB1  `0FA30A05A0A5`
-- RB2  `0FA40A06A0A6`
+- `0FA00A00A0A0` AZ1    2010
+- `0FA10A01A0A1` AZ2    2011
+- `0FA20A02A0A2` AZ3    2012
+- `0FA20A03A0A3` AZ3SR  2012
+- > Unknown 04
+- `0FA30A05A0A5` RB1    2013
+- `0FA40A06A0A6` RB2    2014
+- > Unknown 07
+- `0FA40A08A0A8` FMP-X7 2014
+- `0FA50A09A0A9` GN1    2015
+- `0FA60A0AA0AA` GN3    2016
+- `0FA70A0BA0AB` GN5    2017
+- `0FA80A0CA0AC` GN6    2018
+
+### Structure
+It seems to be:
+- `0F` - always 0F
+- `Ax` - second nibble is the year, A0=2010, A8=2018
+- `0A` - always 0A
+- `xx` - Incremental ID
+- `A0` - always A0
+- `Ax` - second nibble is the same as incremental ID
+
+Mediatek linux TV and some AZ1 tv seems to use a different structure

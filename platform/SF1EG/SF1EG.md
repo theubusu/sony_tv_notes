@@ -44,7 +44,7 @@ The NOR flash contains the ABK Monitor/bootloader, version `M1.202C` from Aug 17
 
 ### Environment
 Encrypted environment is stored at 0x3A000 in the NOR, size 0x1000. It is decrypted with the `serial` value, which is stored at 0x3D000. See script `tool/dec_env.py`.   
-It stores values: `reboot`, `wdt`, `message`, `home`, `password`, `autoboot`, `boot`, `ilink_modelname`, `ilink_modelid`, `set_serial`, `setname`, `module`
+It stores values: `preboot`, `wdt`, `message`, `home`, `password`, `autoboot`, `boot`, `ilink_modelname`, `ilink_modelid`, `set_serial`, `setname`, `module`
 
 There is also another blob of data encrypted the same way at 0x3C000, it has the values of `macaddr` and `ilinkkey`, and some other unknown data.
 

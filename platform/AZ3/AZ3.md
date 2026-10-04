@@ -1,21 +1,29 @@
 # AZ3 platform (2012)
 
 ## SoC
-CXD4733GB "X-Reality"
+CXD4727GB/CXD4733GB "X-Reality"
 - Kernel mach: `ayubrd`
-- Same mach as AZ2
 - Service manual name: `Atreyu`   
 
-Interesting note: "Toshiba Atreyu" mentioned [here](https://github.com/kousik1004/ResumeXtract/blob/39bfeea10fede11ec4ff22a7bf6fbbc96b6eeb0d/sample_resumes/batch_9/5775_Asit_Shrivastava.txt#L184) - possibly Toshiba SoC?
+CXD4727GB(from AZ2) and CXD4733GB seems to be both used interchangably in the chassis. In the Service manual there is this table:
 
-MIPS cpu. specifics unknown
+### [DIVX]
+|       |YES        |NO         |
+| ----  | --------- | --------- |
+|IC9000 |CXD4727GB  |CXD4733GB  |
+
+IC9000 is the SoC.
+So CXD4727GB is used for DIVX and CXD4733GB is used for NO DIVX? Not sure what this means/implies.
+
+Interesting note: "Toshiba Atreyu" mentioned [here](https://github.com/kousik1004/ResumeXtract/blob/39bfeea10fede11ec4ff22a7bf6fbbc96b6eeb0d/sample_resumes/batch_9/5775_Asit_Shrivastava.txt#L184) - possibly Toshiba SoC?
 
 ## Kernel
 `mips, 2.6.23.17-alp_nl_` (per Opera)   
 - Same kernel as AZ2
 
 ## NAND
-- 256MB BGA63 OneNAND
+- 512MB BGA63 OneNAND `KFM4G16Q4B-BEB1`/`TC58RYG2S5F` (AEP/UC/PA/TW/HK/BR)
+- 256MB BGA63 OneNAND `TC58RYG1S8EBAIA` (JP/CHD)
 
 There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA63 is expensive). Therefore, its not known whether the NAND is encrypted.
 
@@ -24,7 +32,13 @@ NUX, slighly modified main menu design compared to 2011 (icons at the bottom now
 
 ## Opera
 Version: 3.2   
-Build: LSDK4510
+Build: LSDK4510   
+Platform: Linux   
+System: `mips, 2.6.23.17-alp_nl-`
+Vega backend: DirectFB
+
+### Browser identification
+`Opera/9.80 (Linux mips; U; InettvBrowser/2.2 (00014A;SonyDTV115;0002;0100) KDL55HX850; CC/POL; pl) Presto/2.10.250 Version/11.60`
   
 ### Access paths
 |     | Path |
@@ -66,5 +80,8 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/qNe
 | EUG | ? | sony_dtv0FA20A03A0A3_00071100 |
 | AAZ | ? | sony_dtv0FA20A03A0A3_00061301 |
 
+## Notable/interesting hardware 
+- Sony VAIO SVL241 series - AIO PC with built-in MONITOR function, X-Reality CPU XCD4733GB on a small board VTV Board PN 1-886-283-12 [yt](https://www.youtube.com/watch?v=dwibdIui7HA) [pa](https://notebookparts.com/products/sony-vaio-all-in-one-pc-svl241a11l-vtv-board-u-1-886-283-12-173343212)
+
 ## Sources
-KDL-55HX850
+KDL-55HX850 PKG2.120EUA

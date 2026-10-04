@@ -39,8 +39,15 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/xsu
 | BRB       | ISDB-LTN_NO-GIN     						|? |
 | JPA       | ISDB-JP_BASE        						|?|
 
-## FMP-X5/FMP-X10
-These two 2014 4K media player models use the Ayu2 CPU and the RB2 software. FMP-X10 used the `AAQ` PKG, but firmware is nowhere to be found now.
+## Notable/Interesting hardware
+### FMP-X5/FMP-X7/FMP-X10
+These 2014 4K media player models use the Ayu2 CPU and the RB2(based) software. 
+
+FMP-X5(Europe/Canada) never had software update released. [sm](https://elektrotanya.com/sony_fmp-x5_fmp-x5-1_4k-hd-mp_ver.1.0_rm.pdf/download.html)
+
+FMP-X7(Japan) software update site is up at https://www.sony.jp/bravia/update/usbup_fmp-x7.html, `sony_boxupdate_2014_2074_jpp_auth.zip`, `PKG2.074JPP` but the download link is down. It does say it's update ID however - `sony_dtv0FA40A08A0A8_00413500`
+
+FMP-X10(US) - latest software update `PKG2.071AAQ` released on 04/05/2017, was avaiable [here](https://www.sony.com/electronics/support/home-video-4k-ultra-hd-media-players/fmp-x10/downloads/W0011110), not archived, firmware or even the ID is nowhere to be found now. [sm](https://elektrotanya.com/sony_fmp-x10_4k-hd-mp_ver.2.0_rm.pdf/download.html)
 
 ## Notes/Useful
 - Level 3 Confidential Service manual for RB2G - contains UART/JTAG pinouts, board schematic and connections of AYU2L(So also useful for RB1) - http://televid-sib.org/index.php?topic=22363.msg148626#msg148626

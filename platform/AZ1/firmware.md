@@ -21,7 +21,9 @@ Then `datasize`-0x40 bytes are read, decrypted, and the output is expected to be
 
 The decrypted data is saved to  `/var/download/{model%08X}_{major%04X}{minor%04X}.frz`
 
-The linux side updater does not do anything to the FRZ file. It is most likely executed by the bootloader on the next boot.
+The linux side checks that the first segment of the FRZ file has the type 0xF1, and uses a 32bit value at offset +0x05 as the total size of the update.
+
+The bootloader's `preboot` value is then set to the path to the decrypted FRZ file. The bootloader will execute it on the next boot.
 
 ## Decryption key
 The decryption key is calculated based on two bootloader environment variables: `frzkey` and `serial`

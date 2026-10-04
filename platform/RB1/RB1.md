@@ -126,5 +126,18 @@ The opera browser and nginx run as UID 500.
   1489 500       0:20 dtWebBrowserApp WEBBR
 ```
 
+## Opera
+Version: 3.4.1  
+Build: LSDK5603   
+Platform: Linux   
+System: `armv7l, 2.6.35.14_nl-az4`   
+Vega backend: OpenGL ES
+
+### Browser identification
+`Opera/9.80 (Linux armv7l; InettvBrowser/2.2 (00014A;SonyDTV115;0002;0100) KDL24W605A; CC/POL) Presto/2.12.362 Version/12.11`
+  
+### Access paths
+Access paths are not displayed
+
 ## Sources
-KDL-24W605A
+KDL-24W605A PKG4.600EUA
