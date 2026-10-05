@@ -1,3 +1,3 @@
-# sony_dtv_linux
+# Sony TV notes 
 
-My notes/"documentation" of Linux-based Sony TVs.
+My notes/"documentation"/tools of the research of architecture/platform used in older Sony TVs
