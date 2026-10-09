@@ -16,6 +16,7 @@ The android version it runs is 4.0.4. Model reports as `BRAVIA`. See the dump of
 `<3>init: cannot find '/sbin/adbd', disabling 'adbd'`
 - As described in `NAND.md`, the android data partition is only around ~110 MB in size. The root filesystem is squashfs, so it is read-only.
 - I have managed to accidentally brick the android subsystem by messing with some SSH server app, the TV will show an error on boot along the lines of "Some apps may not be avaliable due to a system error, See iManual for more info". iManual prompts to factory reset the device in this case. That completely wiped the data partition and android was back up
+- The `build.prop` has product name set as `scalarc`, which could relate to the `ScalarA` android sub-system used in Sony's cameras. But other than that name, there doesn't seem to be that much in common between the two. (https://github.com/ma1co/Sony-PMCA-RE/blob/master/docs/AppInstallation.md)
 
 ## Running arbitrary Android activities
 On boot, the TV downloads two files that describe the apps list present in the SEN menu from URLS:
@@ -84,6 +85,19 @@ public enum HVAMessageType {
     HVA_LAUNCH_NEW_ACTIVITY(9),
     HVA_SHUTDOWN_ANDROID(10);
 }
+```
+
+It is communicated by the ipc interfaces in /tmp (but they are not accessible to app user)
+```
+ls -la /tmp
+srwxrwx--- root     system            1999-12-31 23:00 ipc-appinfo
+srwxrwx--- root     system            1999-12-31 23:00 ipc-hvastatecontroller
+srwxrwx--- root     system            1999-12-31 23:00 ipc-hvdandroidstatemgr
+srwxrwx--- root     system            1999-12-31 23:00 ipc-netconf
+srwxrwx--- root     system            1999-12-31 23:00 ipc-settings
+srwxrwx--- root     system            1999-12-31 23:00 ipc-webapiid
+srwxr-xr-x root     root              1999-12-31 23:00 usb_server
+drwxr-xr-x root     root              1999-12-31 23:00 ws
 ```
 
 Photo frame app also utilizes the public web control interface at port 80 for some commands.

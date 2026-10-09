@@ -7,6 +7,8 @@ CXD4727GB "X-Reality"
 
 MIPS cpu. specifics unknown
 
+RAM: 512MB DDR3
+
 ## Kernel
 `mips, 2.6.23.17-alp_nl_` (per Opera)
 

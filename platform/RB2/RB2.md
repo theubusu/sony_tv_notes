@@ -1,4 +1,6 @@
 # RB2 platform (2014/2015)
+
+## SoC
 SoC information from RB1 should apply, the same are used.
 
 ## NAND/eMMC

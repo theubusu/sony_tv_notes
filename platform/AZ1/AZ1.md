@@ -1,11 +1,13 @@
 # AZ1 platform (2010)
 
 ## SoC
-NEC/Renesas EMMA3T series   
+NEC/Renesas EMMA3T series  
+- EMMA3TL2 For AZ1L 
 - EMMA3TH For AZ1H
-- EMMA3TL2 For AZ1L
 
 Both are MIPS-based CPUs. Check `emma3tl2.pdf` datasheet for more info.
+
+RAM: 256MB DDR2
 
 ## Kernel
 `2.6.23.17-alp_nl-`   

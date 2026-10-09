@@ -17,6 +17,8 @@ So CXD4727GB is used for DIVX and CXD4733GB is used for NO DIVX? Not sure what t
 
 Interesting note: "Toshiba Atreyu" mentioned [here](https://github.com/kousik1004/ResumeXtract/blob/39bfeea10fede11ec4ff22a7bf6fbbc96b6eeb0d/sample_resumes/batch_9/5775_Asit_Shrivastava.txt#L184) - possibly Toshiba SoC?
 
+RAM: 512MB DDR3
+
 ## Kernel
 `mips, 2.6.23.17-alp_nl_` (per Opera)   
 - Same kernel as AZ2

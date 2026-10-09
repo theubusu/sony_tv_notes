@@ -1,6 +1,6 @@
-# Note on MediaTek based TVs
+# MediaTek based TVs
 
-Many MediaTek-based TVs were released by Sony, mostly as lower-end or budget models. They also run Linux, but they are out of scope of interest. The MediaTek TV platform(not developed by Sony) is well known and widely used, and firmware can be easily decrypted. Same goes for any Android based TV also.
+Many MediaTek-based TVs were released by Sony, mostly as lower-end or budget models. They also run Linux, but they are out of scope of interest. The MediaTek TV platform(not developed by Sony) is well known and widely used, and firmware can be easily decrypted. Same goes for any Android based TV also (They are mostly mediatek based as well).
 
 ## Notable platforms (Linux)
 - AZ2EK, 2011 mt5366
