@@ -67,4 +67,8 @@ The later TV's have support for X2 system and also XML widgets.
 ## Firmware
 The MS firmware for these TVS is in the SPF/SPF2 format.
 
-Older SPF1 files also shipped with a `.ram` application file which actually decrypts and installs it, it seems to use an AES decryption function mapped outside of the application.
+SPF files also ship with a `.ram` file which actually performs the installation. 
+
+SFP1 files are decrypted using a hardcoded AES256 key and can be decrypted(implemented in [unixtract](https://github.com/theubusu/unixtract/tree/main/src/formats/spf1)). They are just a compressed and encrypted TAR archive.
+
+SPF2 files are encrypted using some sort of hardware AES, and cannot be decrypted as of now. They also most likely contain a TAR archive inside. Those are also shipped as USB files with name `FIRMWARE.UPD`, which has additional header, but is still an SPF2 file.
