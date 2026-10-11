@@ -29,9 +29,11 @@ Also used in AZ1N
 ![picture](../images/tl3jig_hook1.jpg)
 ![picture](../images/tl3jig_2.jpg)
 
-## TL-WAX2 JIG
+## TL-WAX2/TL-WAX3 JIG
 Shown in EX2N board recovery procedure (needs modification to work)
 ALso TL-WAX2 and TL-WAX3 is used interchangably there so they are probably the same
+
+![picture](../images/Programator%20TL-WAX3_c.jpg)
 
 ### Rework to be applied in the back side of TL-WAX2 or TL-WAX3 board:
 Add two wires to connect:
@@ -40,6 +42,7 @@ Add two wires to connect:
 
 ![picture](../images/tlwax2.jpg)
 ![picture](../images/tlwax2_back.jpg)
+
 
 ## TL-EX1 JIG
 This jig is mentioned/ implemented in pretty much every tv after 2009/2010. But i have been unable to find any pictures of it sadly. The pinouts it uses are described in `uart.md`

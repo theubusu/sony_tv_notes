@@ -5,7 +5,7 @@ NEC/Renesas EMMA3T series
 - EMMA3TL2 For AZ1L 
 - EMMA3TH For AZ1H
 
-Both are MIPS-based CPUs. Check `emma3tl2.pdf` datasheet for more info.
+Both are MIPS-based CPUs. Check `emma3tl2.pdf` and `emma3th.pdf` datasheets for more info.
 
 RAM: 256MB DDR2
 
@@ -15,7 +15,7 @@ RAM: 256MB DDR2
 
 ## NAND
 - AZ1L: 1x128MB OneNAND BGA63 chip
-- AZ1H: 2x64MB TSOP48 NAND chips (interleaved, more in `NAND.md`)
+- AZ1H: 2x64MB TSOP48 NAND chips (interleaved, more in `NAND.md`) (EMMA3TH has no OneNAND interface unlike E3TL2)
 
 The NAND is not encrypted.
 

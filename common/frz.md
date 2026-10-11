@@ -1,3 +1,5 @@
+# == UNFNISHED == 
+
 # FRZ file format
 The FRZ file format is used by Sony here in order to store executable binaries.   
 It is used for example for the kernel image - `VMLINUX.FRZ`, loaded by the bootloader.   
