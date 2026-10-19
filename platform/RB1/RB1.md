@@ -1,7 +1,9 @@
 # RB1 platform (2013)
 
 ## SoC
-CXD4741GB(Ayu2)/CXD4748GB(Ayu2L) "X-Reality Pro"
+CXD4741GB/CXD4745GB(Ayu2)   
+CXD4748GB(Ayu2L)   
+"X-Reality Pro"   
 - ARMv7L
 - Kernel mach: `bst2brd`
 - Service manual name: `Ayu2/Ayu2L`   
