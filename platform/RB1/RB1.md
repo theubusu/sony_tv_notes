@@ -57,7 +57,30 @@ The NAND is fully encrypted, most likely using a CPU specific key. Therefore eve
 For more NAND layout info see `NAND.md`
 
 ## UART
-The UART connector pinout can be found in service manuals of this or similar platforms, but it is seemingly disabled in production environment, completely quiet. There is also a JTAG connector, but it was not tested.
+The UART connector pinout can be found in service manuals of this or similar platforms (see `common/uart.md`)
+
+The uart is quiet while the TV is running, but if you press `ESC` while powering the TV on, you will get dropped to the bootloader's password prompt:
+
+```
+A1949538A_9066794 : Ad7Q2v7V_a_bu0xwIkybb0nq :
+```
+The first value (`A1949538A_9066794` in my case) is almost certainly the `serial` value that was also seen in AZ1.   
+The second value is a random string that is regenerated on every attempt, example:
+```
+A1949538A_9066794 : Ad7Q2v7V_a_bu0xwIkybb0nq :
+A1949538A_9066794 : X5d3LMYWM1HiMHojFcMOpq :
+A1949538A_9066794 : 6E4Isav3DGncZ5HAags0OG :
+A1949538A_9066794 : xC4fqbPSo91bDm406dPznq :
+A1949538A_9066794 : TLgUeUpPW0WYf7YtFgCT3G :
+```
+It seems to be built of `0-9`, `a-z`, `A-Z` and `_`.
+
+You have 5 attempts to enter the correct password. If you fail all of them, the system will stall until you reboot.
+
+A unique (per-serial, so per device, and also per attempt) password is most likely generated based on the two provided values. There is a related password generation technique in the ABK of AZ1, but i couldn't get a match by trying that.
+
+## JTAG
+TBD
 
 ## Android
 The platform has an Android subsystem. Read `android.md`

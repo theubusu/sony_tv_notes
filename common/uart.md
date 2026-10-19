@@ -6,7 +6,7 @@ On AZ1 the SoC Uart seems to be enabled and accepts SysRq interrupt (per https:/
 
 On AZ2/AZ3 wheter it is enabled it is unconfirmed.
 
-On RB1/RB2 SoC uart seems to be disabled/quiet. 
+On RB1/RB2 SoC uart is quiet while running, but allows to get into the bootloader's password prompt (read RB1 section for more info)
 
 ### Specific per-chassis pinout
 | pin | AZ1          | AZ2        | AZ3        | RB1/RB2    | EX2M      |
