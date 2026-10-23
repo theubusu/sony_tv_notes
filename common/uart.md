@@ -2,12 +2,6 @@
 
 Basically all 2009/2010+ TV's use the same base UART pinout (referenced as TL-EX1 jig connector). It is located on an 18-pin debug connector, not soldered to the board. There is always 4 UART interfaces, with the main (CPU) one being on pins 7(RX) and 12(TX). The rest is related to micom/pem stuff.
 
-On AZ1 the SoC Uart seems to be enabled and accepts SysRq interrupt (per https://acassis.wordpress.com/2014/10/08/more-sony-kdl-32ex405-logs/)
-
-On AZ2/AZ3 wheter it is enabled it is unconfirmed.
-
-On RB1/RB2 SoC uart is quiet while running, but allows to get into the bootloader's password prompt (read RB1 section for more info)
-
 ### Specific per-chassis pinout
 | pin | AZ1          | AZ2        | AZ3        | RB1/RB2    | EX2M      |
 |-----|--------------|------------|------------|------------|-----------|
@@ -51,7 +45,29 @@ On my BATL(AZ2) board this connector is actually populated.
 | 10  | VCC     |
 
 ## JTAG
-AZ2,AZ3,RB1,RB2 boards have a JTAG connector. It is a small 14 pin connector. Whether it works and is enabled is currently unknown. It's possible that some components related to JTAG are not populated on retail board.
+AZ2,AZ3,RB1,RB2 boards have a JTAG connector. It is a small 14 pin connector.
+
+### Confirmed pinout
+| pin | RB1/RB2      |
+|-----|--------------|
+| 1   | TRST         |
+| 2   | X_ARM_SRST   |
+| 3   | TDI          |
+| 4   | NC           |
+| 5   | TDO          |
+| 6   | GND          |
+| 7   | TMS          |
+| 8   | GND          |
+| 9   | TCK          |
+| 10  | GND          |
+| 11  | DINT         |
+| 12  | RST          |
+| 13  | VDD          |
+| 14  | VDD          |
+
+Note:
+- on my RB1 board, the TMS was disconnected electrically due to a missing capacitor on the line, i needed to bridge it for it to work
+- RST from JTAG connector does not allow to hold CPU in reset, for that connect to X_SOC_RST directly.
 
 ## Pictures
 ### Debug connectors on BATL(AZ2) board (debug=CN9004) (MS=CN9003) (Side type)

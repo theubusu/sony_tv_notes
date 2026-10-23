@@ -3,11 +3,11 @@
 | Prefix    | Meaning |
 | --------  | -------- |
 |DM		    |Digital(main) software|
-|WF	        |Wireless firmware ?|
+|WF	        |? Firmware|
 |DF	        |Digital Firmware|
 |DB         |Digital Boot/Bootloader|
-|YM         |Unknown|
-|M		    |Bootloader/Monitor|
+|YM         |DDR Init program|
+|M		    |Bootloader (ABK)|
 |DD	        |NVM Data|
 |PK         |Unknown|
 |AM		    |Android|

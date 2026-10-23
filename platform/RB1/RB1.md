@@ -4,7 +4,8 @@
 CXD4741GB/CXD4745GB(Ayu2)   
 CXD4748GB(Ayu2L)   
 "X-Reality Pro"   
-- ARMv7L
+- Main ARMv7L Core
+- Standby MIPS Core
 - Kernel mach: `bst2brd`
 - Service manual name: `Ayu2/Ayu2L`   
 - Possibly custom by Sony Semiconductor Solutions [ref](https://www.arm.linux.org.uk/developer/machines/list.php?mid=3625)
@@ -81,8 +82,23 @@ You have 5 attempts to enter the correct password. If you fail all of them, the 
 
 A unique (per-serial, so per device, and also per attempt) password is most likely generated based on the two provided values. There is a related password generation technique in the ABK of AZ1, but i couldn't get a match by trying that.
 
+- I got this to appear once after booting in the UART output: 
+```
+<<< file-system check >>>
+FAT floating entry error : FAT[019e] = 019f, FAT[019f] = 01a0, FAT[01a0] = 01a1, FAT[01a1] = fffffff, --> removed
+```  
+The strings displayed here are visible in old ABK's dump. So that means the uart of ABK is also set to display errors.
+
 ## JTAG
-TBD
+JTAG is avaliable on the board, and is set to operate on the STANDBY CPU core (MIPS) by default (possibly changed via strap). 
+- `IDCODE 0x447480e3: ver 0x4, part 0x4748 (match CXD4748GB?), mfg 0x071 (Sony)`
+
+Pinout/connection info avaliable in `common/uart.md`
+
+You can interrupt the MIPS's cpu boot operation (described in `boot.md`), but some resources are limited in this state. Also after MIPS boots the ARM core, JTAG is no longer avaliable.
+
+### JTAG limitation
+For whatever reason, when JTAG is enabled and we are in the bootrom phase, the NAND controller and some other components become seemingly disabled/unavaliable. The NAND VCC actually drops to 0V. So we currently cannot access NAND while JTAG is engaged.
 
 ## Android
 The platform has an Android subsystem. Read `android.md`
