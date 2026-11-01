@@ -6,7 +6,7 @@
 |WF	        |? Firmware|
 |DF	        |Digital Firmware|
 |DB         |Digital Boot/Bootloader|
-|YM         |DDR Init program|
+|YM         |Standby firmware|
 |M		    |Bootloader (ABK)|
 |DD	        |NVM Data|
 |PK         |Unknown|

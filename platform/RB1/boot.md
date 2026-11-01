@@ -9,61 +9,121 @@ It its located at `0xbfc10000`, `0x10000` size.
 
 ### Booting
 The bootrom can boot off:
-- NAND (2 configs)
+- OneNAND
+- RawNAND
 - SPI (2 configs, either encrypted or not)
-- MemoryStick?
-- TFTP
+- MemoryStick
+- Network(TFTP?)
 
 The boot option is decided by straps/OTP.
 
 ### Loading
-The two programs loaded by the BootROM (DDR, ABK) are described by a 0x40 header stored on the selected boot source.
+The loaded images are described by a 0x200 header stored on the selected boot source. ABK can also load and handle these images
 
 Both the header and the data is stored ENCRYPYTED, and is then decrypted using a hardware device DMA. The bootrom does not have any crypto code or key material itself.
 
-#### Header structure (all big endian)
+#### Image Header structure (all big endian)
 | type          | purpose |
 | --------      | -------- |
 | u32           | magic1; must be 0xFAF0D5BE   |
 | u32           | magic2; must be 0x30DA43F2   |
 | u32           | magic3; must be 0x813442F2   |
-| u32           | type magic; 0x0544BE8_, last char must be C for DDR, D for ABK  |
-| [u8;16]       | digest; also checked by hw operation after decrypt   |
+| u32           | type magic; 0x0544BE__, last char determines type, see below  |
+| [u8;16]       | MAC digest; also checked by hw operation after decrypt   |
 | u32           | size of the payload   |
-| u32           | size of ? (maybe after processing)   |
-| u32           | adress of the payload |
-| u32           | probably entry point address |
+| u32           | size of decompressed payload   |
+| u32           | load address |
+| u32           | entry point address |
 | u32           | some paramater passed to the hw engine |
 | u32           | address of ? |
 | u32           | some paramater passed to the hw engine |
 | u32           | unknown |
+
+After header, follows 16 bytes of a version string.
+The rest is padded with 0xFF
+
+The data can be compressed using DEFLATE (hardware). One of the engine parameters possibly describes the compression, but cant be certain which since i havent seen an uncompressed image, and both values are always 1.
+
+Image type table (for type magic):
+| char          | name |
+| --------      | -------- |
+| 0x8C           | DDRInit   |
+| 0xAC           | Standby   |
+| 0x8D           | ABK   |
+| 0xAF           | LogoFW  |
+| 0xB0          | MiniKernel   |
+
 
 - For NAND boot, it searches it for a valid header.
 - For production SPI boot, it checks offset 0x200 (matches with RB2T eMMC boot SPI)
 - For TFTP, it looks for file `ayu2_ddr?.code` and `ayu2_abk?.code` (Ayu2), `ay2l_ddr?.code` and `ay2l_abk?.code` (Ayu2L). The `?` is `a`-`p` decided by some strap value
 - For MS boot, it looks for a valid boot MBR partition
 
-### Dump SRAM
-From SRAM dump of bootrom (`0xbfc20000`), we can find some leftover data from previous boot including DDR program, ABK program header, NAND register table/script.
+## DDRInit
+The bootrom loads and executes a small DDRInit program (it is MIPS code).  
 
-## DDR
-The bootrom first loads and executes a small "ddr"(DDR init?) program (it is MIPS code).  
+Its exact behaviour was not analyzed, but its responsible for setting up the DDR RAM.
 
-That program is loaded into SRAM. It can be and was also dumped.
-- For Ayu2 dump version: `A2E1YM1.007	13/04/03_13:38`
-- For Ayu2L dump version: `A2L1YM1.011	13/10/03_19:36`   
-
-YMX.XXX version string matches what is in the service menu. So it represents that.
-
-What this program does exactly was not analyzed yet.
+## Standby
+Standby firmware is contained in the same image as DDRInit, and is also loader by bootrom
 
 ## ABK
-After init DDR, the bootrom loads ABK, which is the main bootloader for the ARM core. After loading it, bootrom will bring up the ARM core pointed to the decrypted ABK code. It is loaded in DDR, outside of SRAM, so it cannot be dumped with the current limitations.
+After init DDR, the bootrom loads ABK, which is the main bootloader for the ARM core. After loading it to DDR, bootrom will bring up the ARM core pointed to the decrypted ABK code.
 
-We can see the version strings located after its program header in SRAM dump:
-- For Ayu2 dump version: `M5.001C`
-- For Ayu2L dump version: `M5.903C`
-
-Again the MX.XXXC version matches what is in service menu, so that is ABK ver like i suspected.
+Latest versions seem to be:
+- For Ayu2: `M5.001C`
+- For Ayu2L: `M5.903C`
 
 ABK then mounts the NAND's main FAT partition, and executes the linux kernel. You can interrupt its boot process and get to a password prompt by pressing `ESC` on TV booting. (described in UART section of main doc)
+
+> todo more abk info
+
+### Environment
+
+ABK environment is loaded from NAND system area and decrypted. For format see `tool/env.py` 
+
+The "fixed" environment, which holds has values that cannot be changed is located in the reserved system parameter NAND block 0, at offset 0x1000.
+In my case it contained variables:
+- `serial` - Main board serial number
+- `macaddr` - Main board mac address
+- `hdcp2xkey`
+- `cipluskey`
+- `tvid_service_tag`
+- `nfxesn`
+- `nfxkey`
+- `tvid` - 16 byte seemingly random value
+- `extract_path_fixed` - `/tmp/mnt/MSSONY/ABK/bin/exec_install.list`
+
+The variable environment is placed in one of NAND system blocks with type `0x60`, In my case it contained variables:
+- `EMK` - key involved in decryption of FRA, not sure if device unique
+- `BDI` - selected BDI
+- `exttusize`
+- `extfreeblk1k`
+- `extrefintvl`
+- `fatblock`
+- `autoboot` - `on`
+- `productid`
+- `modelid`
+- `serial` (placeholder, real value comes from fixed env)
+- `macaddr` (placeholder, real value comes from fixed env)
+- `hdcp2xkey` (placeholder, real value comes from fixed env)
+- `cipluskey` (placeholder, real value comes from fixed env)
+- `tvid_service_tag` (placeholder, real value comes from fixed env)
+- `nfxesn` (placeholder, real value comes from fixed env)
+- `nfxkey` (placeholder, real value comes from fixed env)
+- `tvid` (placeholder, real value comes from fixed env)
+- `extract_path_fixed` (placeholder, real value comes from fixed env)
+- `ABBT`
+- `boot` - `/vmlinux.fra`
+- `subsystem_conf`
+- `copied_service_tag`
+- `preboot` - `/ssboot.fra`
+- `logincount`
+- `subsystem_mode`
+- `nvm_factory_adj`
+
+## LogoFW
+LogoFW is loaded by ABK. It displays the SONY boot logo.
+
+## MiniKernel
+MiniKernel is loaded by ABK in case it needs to extract any FRA files (`extract_path` is set). It contains a whole linux kernel just for that purpose. (lol)

@@ -22,7 +22,7 @@ NOTE:
 RAM: 1GB DDR3
 
 ### Ayu2L
-- CPU (CA9(Arm Cortex A9?) Dual 800MHz)
+- CPU (CA9(Arm Cortex A9) Dual 800MHz)
 - GPU (SGX543)
 - Multi-format Dec.
 
@@ -55,7 +55,7 @@ It seems to come with some custom `snsc_security` system, mostly for protecting 
 ## NAND
 - 1GB TSOP48 NAND (TC58NVG3S0FTAI0)
 
-The NAND is fully encrypted, most likely using a CPU specific key. Therefore even though there are many NAND dumps, they are all useless
+The NAND is fully encrypted using a CPU specific key. Therefore even though there are many NAND dumps, they are all useless without access to the actual TV.
 
 For more NAND layout info see `NAND.md`
 
@@ -67,7 +67,7 @@ The uart is quiet while the TV is running, but if you press `ESC` while powering
 ```
 A1949538A_9066794 : Ad7Q2v7V_a_bu0xwIkybb0nq :
 ```
-The first value (`A1949538A_9066794` in my case) is almost certainly the `serial` value that was also seen in AZ1.   
+The first value (`A1949538A_9066794` in my case) is the `serial` value that was also seen in AZ1.   
 The second value is a random string that is regenerated on every attempt, example:
 ```
 A1949538A_9066794 : Ad7Q2v7V_a_bu0xwIkybb0nq :
@@ -80,14 +80,17 @@ It seems to be built of `0-9`, `a-z`, `A-Z` and `_`.
 
 You have 5 attempts to enter the correct password. If you fail all of them, the system will stall until you reboot.
 
-A unique (per-serial, so per device, and also per attempt) password is most likely generated based on the two provided values. There is a related password generation technique in the ABK of AZ1, but i couldn't get a match by trying that.
+A unique (per-serial, so per device, and also per attempt) password is generated based on the two provided values. The challenge depends on some call to the hardware crypto processor, so it is not known how it works.
 
 - I got this to appear once after booting in the UART output: 
 ```
 <<< file-system check >>>
 FAT floating entry error : FAT[019e] = 019f, FAT[019f] = 01a0, FAT[01a0] = 01a1, FAT[01a1] = fffffff, --> removed
 ```  
-The strings displayed here are visible in old ABK's dump. So that means the uart of ABK is also set to display errors.
+So that means the uart of ABK is also set to display errors.
+
+## Firmware (Update)
+See `firmware.md`
 
 ## JTAG
 JTAG is avaliable on the board, and is set to operate on the STANDBY CPU core (MIPS) by default (possibly changed via strap). 
@@ -104,7 +107,7 @@ For whatever reason, when JTAG is enabled and we are in the bootrom phase, the N
 The platform has an Android subsystem. Read `android.md`
 
 ## GUI
-"Genome", introduced with this platform. UI is rendered at 1080p , except on HD-ready TV.
+"Genome", introduced with this platform. UI is rendered at 1080p.
 
 ## OSS
 Listing: https://oss.sony.net/Products/Linux/TV/KDL-55W905A.html   
@@ -151,7 +154,7 @@ This is accessible from inside Android, but not sure if any useful.
 ## Useful/Misc notes
 `info.txt` - output of some commands run from android (build.prop, id, mounts, root, dev, ps, dmesg, cpuinfo)
 
-dmesg mentions `<6>[    1.878277] ABK: abk installed` , so it may also use the "ABK Monitor" bootloader
+`release` folder - `.release.version` files from my tv (PKG4.600EUA).
 
 In dmesg:
 ```

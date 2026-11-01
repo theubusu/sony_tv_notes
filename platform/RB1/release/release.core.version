@@ -1,0 +1,33 @@
+#: [Common Info]
+PROTOTYPE=Release
+IMAGE_TYPE=ENG-SCF/ENG-SCP
+PACKAGE_TYPE=EU
+BASELINE_TYPE=A
+PACKAGE_PREFIX=13_RB1
+
+#: [CoreTV Info]
+CORETV_PACKAGE_VERSION=CM4.600EUA
+SYSTEM_PACKAGE_NAME=13_RB1_SYS4.600WW_S.fra
+CORETV_PACKAGE_NAME=13_RB1_CM4.600EUA_CF_relnand.fra
+DTT_SOFTWARE_VERSION=DM4.600EUA
+NVM_DATA_VERSION=
+DVB_RECEIVER_VERSION=0000
+
+#: [DTT Info]
+DTT_BASELINE=//13TV/Qilin/Exp/Release/RB1-Release-11th
+CHANGE_LIST=444903
+BUILD_TYPE=EA
+DEFCONFIG=configs/defconfig-ayu2-one-binary
+PATCHCONFIG="configs/patches/patchconfig-one-to-dvb-xmb configs/patches/patchconfig-develop-to-product configs/patches/patchconfig-disable-under-development configs/patches/patchconfig-disable-assert"
+CONFIGFILE_PATCHED=defconfig-ayu2-one-binary-one-to-dvb-xmb-develop-to-product-disable-under-development-disable-assert.patched
+P4DEPOT_NAME=13TV
+SOFTWARE_VERSION=DM0.0J00AA
+P4_SYNC_LABEL=@444903
+PACKAGE_HOST=slave28.jp.sony.com
+P4BASE_NAME=RB1-Release-11th
+CELINUX_VERSION=8.0
+PACKAGE_TIME=2016/08/08:13:51:53
+P4_TOP_PATH=//13TV/Qilin/Exp/Release/RB1-Release-11th
+PACKAGER=root
+KERNEL_BASE_VERSION=8_1_DTV_ARM_20120926
+P4_SYNC_OPTIONS=-p

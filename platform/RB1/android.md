@@ -7,7 +7,7 @@ In the base system it is only used for:
 - Alpha clock app
 - Open source licenses menu in settings
 
-Note that this does not mean the TV runs android at its core. It does not. It runs Sony's CELinux and TV stack, and Android is ran as a sub-process (started/managed by `dtAndroid`) in a chroot on THE SAME kernel. That's why we can get access to useful information about the underlying core system from android context. But most access is blocked by additional security.
+Note that this does not mean the TV runs android at its core. It does not. It runs Sony's CELinux and TV stack, and Android is ran as a sub-process (started/managed by `dtAndroid`) in a chroot on THE SAME kernel. That's why we can get access to useful information about the underlying core system from android context. This also made it possible to utilize an old kernel exploit to achieve root on the device.
 
 The android version it runs is 4.0.4. Model reports as `BRAVIA`. See the dump of `build.prop` in `info.txt` for more info about the build.
 

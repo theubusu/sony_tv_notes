@@ -4,21 +4,24 @@ The firmware file is found as described in `common/firmware_name.md`
 It is processed by `dtServiceLow` 
 
 ## Structure
-Starts with a 64 byte (encrypted) header, which is decrypted first
+First is read and decrypted a SHA1 hash padded to 32 bytes total. That hash must match the decrypted data.
+
+The encrypted header and data follows. Note that they are decrypted with a fresh AES context, so IV is reset after reading the SHA1 hash.
+
+### Header (0x20 total)
 | type          | purpose |
 | --------      | -------- |
-| [u8;20]       | SHA-1 hash of the decrypted data   |
-| [u8;12]       | unused   |
 | u32           | magic; must be  0xDF81352E  |
 | u32           | model |
 | u32           | major |
 | u32           | minor |
-| u32           | total file size "datasize" |
-| u32           | decrypted size |
+| u32           | file size |
+| u32           | data size |
 | [u8;8]        | unused   |
 
-Then `datasize`-0x40 bytes are read, decrypted, and the output is expected to be `decrypted size` bytes.   
+Then `filesize`-0x40 bytes are read, decrypted, and the output is expected to be `data size` bytes.   
 
+## Content
 The decrypted data is saved to  `/var/download/{model%08X}_{major%04X}{minor%04X}.frz`
 
 The linux side checks that the first segment of the FRZ file has the type 0xF1, and uses a 32bit value at offset +0x05 as the total size of the update.
