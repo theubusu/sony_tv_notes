@@ -1,7 +1,9 @@
 # RB2 platform (2014/2015)
 
+# Most information from RB1 should also apply to RB2.
+
 ## SoC
-SoC information from RB1 should apply, the same are used.
+SoC information from RB1 applies, the same are used.
 
 ## NAND/eMMC
 - 1GB TSOP48 NAND
@@ -15,12 +17,27 @@ RB2T chassis seems to use 2 4GB eMMC's. One of them is mostly empty, its probabl
 In case of eMMC device, it will boot from an external SPI flash. The flash contains a small 0x1200 encrypted blob, which possiblys sets up the eMMC, and continues the boot from there.
 
 ## Android
-This platform also has Android sub-system. It’s probably the same as in RB1, but wasn’t checked since i don’t have an RB2 TV.
+This platform also has Android 4.0.4 based sub-system like RB1. See its notes for more info
 
-Additionally seems to have an Android media player app.
+However, Crucial difference: The browser app is missing. So installing APKs that way like in RB1 isnt possible.
+
+## Firmware (Update)
+See RB1's `firmware.md`, RB2 uses the same firmware keys and format, also RB1 tv's can decrypt RB2 fra packages (because keys are SoC specific, and both use same SoC series).
+
+RB2 firmware packages also additionally ship with LYON package for the sub-cpu on some higher-end TVs:
+```
+LYON_PACKAGE_VERSION=LM3.006LNA
+LYON_PACKAGE_NAME=14_RB2LN_LM3.006LNA_LP_relnand.fra
+LYON_SYSTEM_PACKAGE_NAME=14_RB2LN_SYS3.006WW_S.fra
+LYON_VERSION_PACKAGE_NAME=14_RB2LN_00003100_V1056_VER3.006LNA_V.fra
+```
+
+These cannot be decrypted by Ayu2, since Lyon is a seperate soc with different keys.
 
 ## GUI
 Internally also called „Genome” like in RB1, but its a different full-screen style menu, with panel navigation.
+
+plus DUX (Discovery UX)
 
 ## SEN/BIVL
 Indexes(EU): https://applicast.ga.sony.net/WsIndexes/RB2_EU.xml

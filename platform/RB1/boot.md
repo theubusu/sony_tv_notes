@@ -30,14 +30,14 @@ Both the header and the data is stored ENCRYPYTED, and is then decrypted using a
 | u32           | magic3; must be 0x813442F2   |
 | u32           | type magic; 0x0544BE__, last char determines type, see below  |
 | [u8;16]       | MAC digest; also checked by hw operation after decrypt   |
-| u32           | size of the payload   |
-| u32           | size of decompressed payload   |
+| u32           | stored size of the payload   |
+| u32           | decompressed size of  thepayload   |
 | u32           | load address |
 | u32           | entry point address |
 | u32           | some paramater passed to the hw engine |
 | u32           | address of ? |
 | u32           | some paramater passed to the hw engine |
-| u32           | unknown |
+| u32           | unknown; possibly version? |
 
 After header, follows 16 bytes of a version string.
 The rest is padded with 0xFF
@@ -95,25 +95,28 @@ In my case it contained variables:
 - `extract_path_fixed` - `/tmp/mnt/MSSONY/ABK/bin/exec_install.list`
 
 The variable environment is placed in one of NAND system blocks with type `0x60`, In my case it contained variables:
+
+The [placeholder] store an offset to the actual value inside fixed env, the value is not stored here.
+
 - `EMK` - key involved in decryption of FRA, not sure if device unique
 - `BDI` - selected BDI
-- `exttusize`
-- `extfreeblk1k`
-- `extrefintvl`
+- `exttusize` - related to EXT partition (nandb1)
+- `extfreeblk1k` - related to EXT partition (nandb1)
+- `extrefintvl` - related to EXT partition (nandb1)
 - `fatblock`
 - `autoboot` - `on`
 - `productid`
 - `modelid`
-- `serial` (placeholder, real value comes from fixed env)
-- `macaddr` (placeholder, real value comes from fixed env)
-- `hdcp2xkey` (placeholder, real value comes from fixed env)
-- `cipluskey` (placeholder, real value comes from fixed env)
-- `tvid_service_tag` (placeholder, real value comes from fixed env)
-- `nfxesn` (placeholder, real value comes from fixed env)
-- `nfxkey` (placeholder, real value comes from fixed env)
-- `tvid` (placeholder, real value comes from fixed env)
-- `extract_path_fixed` (placeholder, real value comes from fixed env)
-- `ABBT`
+- `serial` [placeholder]
+- `macaddr` [placeholder]
+- `hdcp2xkey` [placeholder]
+- `cipluskey` [placeholder]
+- `tvid_service_tag` [placeholder]
+- `nfxesn` [placeholder]
+- `nfxkey` [placeholder]
+- `tvid` [placeholder]
+- `extract_path_fixed` [placeholder]
+- `ABBT` - Bad Block Table ?
 - `boot` - `/vmlinux.fra`
 - `subsystem_conf`
 - `copied_service_tag`
@@ -123,7 +126,7 @@ The variable environment is placed in one of NAND system blocks with type `0x60`
 - `nvm_factory_adj`
 
 ## LogoFW
-LogoFW is loaded by ABK. It displays the SONY boot logo.
+LogoFW is loaded by ABK. It displays the SONY boot logo. It is MIPS code.
 
 ## MiniKernel
 MiniKernel is loaded by ABK in case it needs to extract any FRA files (`extract_path` is set). It contains a whole linux kernel just for that purpose. (lol)

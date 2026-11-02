@@ -185,3 +185,7 @@ Access paths are not displayed
 
 ## Sources
 KDL-24W605A PKG4.600EUA
+
+##
+![picture](../../images/rb1fetch.png)
+( ˊᵕˋ )°♡.

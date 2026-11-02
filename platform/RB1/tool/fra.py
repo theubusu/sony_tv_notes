@@ -5,17 +5,27 @@ import os
 from decsrv import decrypt_data
 from hexdump import hexdump
 
-outd = None
 fradec = False    #mimic /dev/fradec (skip first section and merge rest to one stream)
+dodecrypt = True  
 if len(sys.argv) >= 3:
     outd = sys.argv[2]
-    if len(sys.argv) == 4 and sys.argv[3] == "-f":
+    if "-f" in sys.argv:
         fradec = True
         outf = open(outd, "wb")
-        
     else:
         if not os.path.exists(outd):
             os.makedirs(outd)
+            pass
+        
+    if "-d" in sys.argv:
+        dodecrypt = False
+else:
+    print(f"FRA file tool")
+    print(f"usage: {sys.argv[0]} <INPUT FILE> <OUTPUT> [OPTIONS]")
+    print(f"Options:")
+    print(f"-f : Mimic /dev/fradec - combine all sections except the first into one output file.")
+    print(f"-d : Use a already decrypted fra file, No decryption will be done.")
+    exit()
             
 with open(sys.argv[1], "rb") as file:
     file_header = file.read(0x80)
@@ -46,7 +56,8 @@ with open(sys.argv[1], "rb") as file:
     
     #read section header(s)
     section_headers = file.read(section_header_size)
-    section_headers = decrypt_data(section_headers, release_key, initial_vector)
+    if dodecrypt:
+        section_headers = decrypt_data(section_headers, release_key, initial_vector)
     
     section_block_header = section_headers[:0x80]
     section_num = struct.unpack(">I", section_block_header[0:4])[0]
@@ -78,18 +89,15 @@ with open(sys.argv[1], "rb") as file:
         
         #assert file.tell() == file_header_size + section_header_size + security_header_size + payload_offset
         payload = file.read(payload_size)
-        payload = decrypt_data(payload, release_key, section_initial_vector)
+        if dodecrypt:
+            payload = decrypt_data(payload, release_key, section_initial_vector)
         
         #decompress (done on hw side)
         if records == 1:
             payload = zlib.decompress(payload, wbits=-15)
         
-        if outd:
-            if fradec:
-                if i != 0:
-                    outf.write(payload)
-            else:
-                open(f"{outd}/{i}.bin", "wb").write(payload)
         
-        
-        
+        if fradec and i != 0:
+            outf.write(payload)
+        else:
+            open(f"{outd}/{i}.bin", "wb").write(payload)

@@ -59,6 +59,8 @@ It contains the system images in the root:
 #### Note about squashfs
 The squashfs images used have a custom compression definition where raw DEFLATE is used by linux crypto. Sony did that because the DEFLATE is hardware accalerated on this platform. The modification can be seen in kernel sources `fs/squashfs/crypto_wrapper.c`. So in order to extract the images, you need to modify your squashfs program to include this compressor.
 
+Also noting that the squashfs images don't seem to be signed/verified in any way. But I haven't tried to replace them yet.
+
 ### nandb
 `nandb` is 115343360 bytes (110 MB) in size, and it contains one EXT4 partition. It is used as the `/data` partition for Android   
 `/dev/nandb1 /data ext4 rw,nosuid,nodev,noatime,barrier=1,data=ordered 0 0`

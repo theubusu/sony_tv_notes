@@ -61,7 +61,7 @@ Then follows `SecurityHeaderSize` of optional encrypted security header, its for
 ## Encryption&Verification
 FRA decryption is done fully using hardware crypto processor. That means it is not possible to decrypt their data outside the TV (unless you somehow get the master keys and process from it). The decryption also depends on the `EMK` environment value(not sure if unique per device) and `ReleaseKey`+`InitialVector` from the file's header
 
-In `sonyrd.ko` the responsible function is `decrypt_data`. You can hook it from another kernel module and give it arbitrary data to decrypt, which is what i did.
+In `sonyrd.ko` the responsible function is `decrypt_data`. You can hook it from another kernel module and give it arbitrary data to decrypt, which is what i did (see `tool/decsrv`).
 
 After decrypting the data is also compared to the stored CMAC and verified on the hardware side. You can however just ignore that step if you hook the direct decrypting function.
 
