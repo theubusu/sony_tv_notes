@@ -6,7 +6,7 @@ As mentioned, the NAND is encrypted using hardware CBC cipher, it has a system a
 
 ## System
 
-The System Blocks area takes up until `FileSystemStartBlock`(in my case 44), which hold system component images (DDRInit, ABK, Standby..) and Environment. The mapping is stored in `SystemTable`, and is decoded from the OOB of each system page. For each component, a redundancy copy is also stored.
+The System Blocks area takes up until `FileSystemStartBlock`(in my case, and public dumps i checked it is 44), which hold system component images (DDRInit, ABK, Standby..) and Environment. The mapping is stored in `SystemTable`, and is decoded from the OOB of each system page (see `tool/sys_oob.py`). For each component, a redundancy copy is also stored.
 
 #### Component types
 | id          | type |
@@ -20,9 +20,11 @@ The System Blocks area takes up until `FileSystemStartBlock`(in my case 44), whi
 
 Note that block 0 is a reserved system parameters block, you cannot allocate or write it, it holds register table and fixed environment.
 
+The system components (EXCEPT fixed environment/environment) seem to be encrypted with a different key/method than the rest of NAND data, so currently not known how to decrypt them from linux.
+
 ## Filesystem
 
-The filesystem area is split into two sections - `nanda` and `nandb`. It also utilizes some sort of FTL, not fully known yet.
+The filesystem area starts at `FileSystemStartBlock` and is split into two sections - `nanda` and `nandb`. It also utilizes some sort of FTL, not fully known yet.
 
 Dmesg driver log:
 ```
