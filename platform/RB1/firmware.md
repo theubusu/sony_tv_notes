@@ -21,3 +21,35 @@ Every package also comes with an executable section that can extract it and inst
 When extracting the FRA packages (using `/dev/fradec`), the linux-side updater ignroes the first executable section and combines the rest into one stream.
 
 The decrypted packages have a format that can perform various actions (set env, create/delete files, update sys,bdi.panelid..) also depending on the device model , see `tool/do_pkg.py`. 
+
+## Exploitation
+As mentioned before, the update file is not signed, it only utilizes an encrypted SHA1 hash for integrity checking. 
+
+Becuse of that, we can quite easily fabricate our own firmware file that will be accepted and processed by the TV (see `tool/fw_hax/mkfw.py`) 
+
+The processing in question is extracting the inner TAR archive. It is done as follows:
+```c
+iVar2 = execlp("tar","tar","-xvf",*(undefined4 *)(param_1 + 0x18),"-C","/var/download",0);
+```
+
+This is pretty naive, because busybox's tar will happily extract archives with *ABSOLUTE PATHS*
+(example crafted by `tool/fw_hax/tartest.py`)
+```
+/sony/usr/sony/bin # tar -xvf /tmp/test.tar -C /var/download
+/NAND/hello.txt
+/sony/usr/sony/bin # cat /NAND/hello.txt
+hello from NAND
+```
+
+So we can literally write to anything thats writeable on the filesystem using the manufactured file. However we should be very careful with the changes; anything goes wrong and the TV could be bricked forever.
+
+If squashfs replacement is confirmed, this can be used to directly replace one of the images at `/NAND`, although this might cause some unforseen troubles, because we will be rewriting an already mounted loop image with no additional verifications.
+
+Another interesting thing to replace would be the writeable nginx config files at `/var/nginx` (`nginx.conf`, `sites-avaliable`, `sites-configured`)
+
+This could also possibly allow to create symlinks on the NAND filesystem.
+
+### Note about process
+The TV will reboot attempting to install the update after extracting the TAR, but since our TAR has no actual update packages, it will not actually install anything and boot normally, so it will get caught in a loop detecting the update on the USB again and rebooting, so after it reboots for the first time, you need to unplug the USB to prevent that.
+
+Also this does not mean we can create modified FRA packages, this only involves the inital TAR layer.

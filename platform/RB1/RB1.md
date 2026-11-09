@@ -92,6 +92,48 @@ So that means the uart of ABK is also set to display errors.
 ## Firmware (Update)
 See `firmware.md`
 
+## Network Update
+The TV requests the firmware update list from https://525c35912b41b9712ecb54a68431bd66.ssm1.internet.sony.tv/DTV/stv/c/STVgetSoftwareVersionList/
+
+With parameters:
+- `build`, package version - ex.`PKG4.600EUA`
+- `bsp`, BSP version - ex.`BSP-1.1.2-PPP` (hardcoded in dtX2.EU)
+- `tv_id`, 5hex selecting the product ID ex.`00008`(check `common/update_platforms.md` for found ones) for `DTV2013` + 32hex unique TV ID. needs to be valid FOR THAT PRODUCT to show the list
+- `pkg`, full package release version - ex.`13_RB1_00002100_V1967_PKG4.600EUA_SCFADFV`
+- `model`, device model group num - ex.`9`
+- `pkg_id`, the package (model) ID - ex.`00002100`
+
+Only `tv_id` is required. By it, you get a XML response like: (08.11.2026)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<response sys_ver="7.11/14.0.0">
+	<header version="01">
+		<command>STVgetSoftwareVersionList</command>
+		<code>0</code>
+		<debug>
+			<process time="0.00468"/>
+		</debug>
+	</header>
+	<sony>
+		<product id="DTV2013">
+			<list_header version="0">
+				<type_of>update</type_of>
+				<category_id />
+				<option_id />
+				<num_recs>0</num_recs>
+				<num_ass />
+				<list_name>DTV13 Core Production</list_name>
+				<group>DTV13 Core Production</group>
+			</list_header>
+			<updatelist></updatelist>
+		</product>
+	</sony>
+</response>
+```
+The server is still up, but returns an empty update list, even for a non-updated TV. This leads to the assumption that the update service for these older TVs is no longer avaliable sadly.
+
+Because of this( and because the update enforces HTTPS), I have not investigated the process further. 
+
 ## JTAG
 JTAG is avaliable on the board, and is set to operate on the STANDBY CPU core (MIPS) by default (possibly changed via strap). 
 - `IDCODE 0x447480e3: ver 0x4, part 0x4748 (match CXD4748GB?), mfg 0x071 (Sony)`
@@ -139,6 +181,10 @@ var MSG_URL = "http://127.0.0.1:20102/AppDataSource/SendMsg";
 ```
 This is accessible from inside Android, but not sure if any useful.
 
+### USB Widgets
+By creating a `My Widgets` directory on your USB drive and putting widgets there, you can run widgets from USB. A new entry in the Applications section will appear for that purpose. But the widgets still need to be signed.
+
+
 ## PKG (RB1G)
 | pkg       | dest | id      |
 | --------  | ---------- |---------- |
@@ -150,6 +196,29 @@ This is accessible from inside Android, but not sure if any useful.
 | BRA       | ISDB-LTN_BASE       |sony_dtv0FA30A05A0A5_00002400 |
 | BRB       | ISDB-LTN_NO-GIN     |sony_dtv0FA30A05A0A5_00012400 |
 | JPA       | ISDB-JP_BASE        |sony_dtv0FA30A05A0A5_00002500|
+
+## Logging
+### Application log
+The TV's various applications and services have a custom logging setup using `/dev/dtlog`. To read these logs (which can be very useful), you can use the tool at `tool/dtlog.c`.
+
+There is a handy binary included on the TV to change the debug level:
+```
+/sony/usr/sony/bin # dtdebugctrl
+Usage: dtdebugctrl [-OPTION] [PARAM] ...
+
+  -c         print status or set color flag on/off/DOMAIN
+             $dtdebugctrl -c [off|DOMAIN]
+  -l         set debug level by 0-5
+             0:NONE,1:ERROR,2:WARNING,3:INFO,4:DETAIL(DETAIL1),5:VERBOSE(DETAIL2)
+             $dtdebugctrl -l {0|1|2|3|4|5}
+             $dtdebugctrl -l DOMAIN {0|1|2|3|4|5}
+             $dtdebugctrl -l DOMAIN CATEGORY {0|1|2|3|4|5}
+  -?         print this help
+             $dtdebugctrl -?
+```
+
+### Kernel log
+The kernel console is set to `ttynull` if the `message` environment variable is not set to `on`. If it is set to `on`, it SHOULD print the console to UART. But even though i have seemingly been able to turn it to `on` (dtabk printenv message prints it), The kernel still seemingly doesnt recieve it and prints no logs. It could be a limitiation at ABK level.
 
 ## Useful/Misc notes
 `info.txt` - output of some commands run from android (build.prop, id, mounts, root, dev, ps, dmesg, cpuinfo)
