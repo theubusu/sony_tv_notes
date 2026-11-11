@@ -1,12 +1,22 @@
 # RB2 platform (2014/2015)
 
+RB2 SW Codename seems to be "Ryu" for TV, and "Panther" for box:
+```
+DTT_BASELINE=//14TV/Ryu/Exp/Release/RB2-Release-20th
+```
+```
+(FMP-X7)
+DTT_BASELINE=//14BOX/Panther/Exp/Release/TypeB-Release-GM14
+```
+
+
 # Most information from RB1 should also apply to RB2.
 
 ## SoC
 SoC information from RB1 applies, the same are used.
 
 ## NAND/eMMC
-- 1GB TSOP48 NAND
+- 1GB TSOP48 NAND (See RB1's `NAND.md`)
 - 4GB eMMC THGBMAG5A1JBAIR (in ENH mode(?), so data capacity is actually 2GB)
 
 eMMC seems to be used on some higher-end models. In both cases, they are fully encrypted.
@@ -64,7 +74,7 @@ These 2014 4K media player models use the Ayu2 CPU and the RB2(based) software.
 
 FMP-X5(Europe/Canada) never had software update released. [sm](https://elektrotanya.com/sony_fmp-x5_fmp-x5-1_4k-hd-mp_ver.1.0_rm.pdf/download.html)
 
-FMP-X7(Japan) software update site is up at https://www.sony.jp/bravia/update/usbup_fmp-x7.html, `sony_boxupdate_2014_2074_jpp_auth.zip`, `PKG2.074JPP` but the download link is down. It does say it's update ID however - `sony_dtv0FA40A08A0A8_00413500`
+FMP-X7(Japan) software update site is up at https://www.sony.jp/bravia/update/usbup_fmp-x7.html, `sony_boxupdate_2014_2074_jpp_auth.zip`, `PKG2.074JPP`, update id: `sony_dtv0FA40A08A0A8_00413500`. Original dl link is down, but the file can be found at: https://tv.update.sony.net/OND/2014/as/jp/F93419600_PS108348/sony_boxupdate_2014_2074_jpp_auth.zip. It is pretty much a standard RB2 firmware.
 
 FMP-X10(US) - latest software update `PKG2.071AAQ` released on 04/05/2017, was avaiable [here](https://www.sony.com/electronics/support/home-video-4k-ultra-hd-media-players/fmp-x10/downloads/W0011110), not archived, firmware or even the ID is nowhere to be found now. [sm](https://elektrotanya.com/sony_fmp-x10_4k-hd-mp_ver.2.0_rm.pdf/download.html)
 

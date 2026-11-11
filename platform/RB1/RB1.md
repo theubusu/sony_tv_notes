@@ -1,4 +1,8 @@
 # RB1 platform (2013)
+RB1 SW Codename seems to be "Qilin":
+```
+DTT_BASELINE=//13TV/Qilin/Exp/Release/RB1-Release-11th
+```
 
 ## SoC
 CXD4741GB/CXD4745GB(Ayu2)   
