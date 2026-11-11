@@ -17,6 +17,21 @@ RAM: 512MB DDR3
 
 There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA63 is expensive). Therefore, its not known whether the NAND is encrypted.
 
+## Firmware
+The format is the same as described in AZ1's `firmware.md` (see `tool/pkg_dec.py` for auto decrypt)
+
+### Key
+It turns out, AZ2/AZ3 use the same key deviration method as RB1, only as big-endian rather than little-endian (see `tool/pkg_key.py`)
+
+- key: `41f43ecdfab621f69f6e8100e9c4e9e1`
+- iv: `05e2bc7943ee2f056a51d95387796b3a`
+
+### Contents
+The decrypted data is a single FRA file (see RB1's `fra.md`). We cannot decrypt this for now, since we don't have access to the system (and RB1's Ayu2 cannot decrypt it, has different keys and/or procedure).
+
+### Exploitation
+We can't be sure how exactly the update is handled (not TAR file like on RB1/RB2), so not sure if any exploitation is possible. However because we can easily modify the header, it could lead to possible downgrade firmware or install from different model.
+
 ## GUI
 NUX, introduced with this platform
 

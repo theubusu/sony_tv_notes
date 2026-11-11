@@ -29,6 +29,9 @@ RAM: 512MB DDR3
 
 There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA63 is expensive). Therefore, its not known whether the NAND is encrypted.
 
+## Firmware
+See AZ2's firmware section.
+
 ## GUI
 NUX, slighly modified main menu design compared to 2011 (icons at the bottom now have labels)
 

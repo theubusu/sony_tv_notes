@@ -30,12 +30,15 @@ Then follows SectionHeaderSize of encrypted section headers
 
 ### Section block header (Encrypted)
 ```
-== Section Block header: 0x80 [unfinished]
+== Section Block header: 0x80
 u32			SectionNum
 u32			EntryPoint
 u32			FileType
 u32			BuildTime
 [u8;16]		BuilderUID
+[u8;32]		BuilderMailAddr
+[u8;16]		BuilderMAC
+u32         Machine
 ```
 Follows SectionNum of Section headers (inside of the decrypted region)
 

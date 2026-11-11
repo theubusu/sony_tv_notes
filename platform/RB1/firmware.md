@@ -1,6 +1,6 @@
 # Firmware (update)
 
-The outer firmware file format is the same as described in AZ1's `firmware.md`, so a SHA-1 and a simple header appended to encrypted file. It is not signed. 
+The outer firmware file format is the same as described in AZ1's `firmware.md`, so a SHA-1 and a simple header appended to encrypted file. (see `tool/pkg_dec.py` for auto decrypt) It is not signed. 
 
 ## Key
 The firmware file AES-128-CBC key is derived based on hardcoded constants in `dtServiceLow` and seems to work for all regions of RB1 and also RB2 firmware.

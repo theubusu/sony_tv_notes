@@ -97,7 +97,8 @@ with open(sys.argv[1], "rb") as file:
             payload = zlib.decompress(payload, wbits=-15)
         
         
-        if fradec and i != 0:
-            outf.write(payload)
+        if fradec:
+            if i != 0:
+                outf.write(payload)
         else:
             open(f"{outd}/{i}.bin", "wb").write(payload)
