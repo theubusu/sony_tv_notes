@@ -257,7 +257,8 @@ Vega backend: OpenGL ES
 Access paths are not displayed
 
 ## Sources
-KDL-24W605A PKG4.600EUA
+KDL-24W605A PKG4.600EUA   
+KDL-24W605A PKG4.612EUA
 
 ##
 ![picture](../../images/rb1fetch.png)

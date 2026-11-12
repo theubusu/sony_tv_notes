@@ -59,9 +59,17 @@ It contains the system images in the root:
 |vmlinux.fra|Linux kernel+coprocessors firmware image|
 
 #### Note about squashfs
-The squashfs images used have a custom compression definition where raw DEFLATE is used by linux crypto. Sony did that because the DEFLATE is hardware accalerated on this platform. The modification can be seen in kernel sources `fs/squashfs/crypto_wrapper.c`. So in order to extract the images, you need to modify your squashfs program to include this compressor.
+The squashfs images used have a custom compression definition where raw DEFLATE is used by linux crypto. Sony did that because the DEFLATE is hardware accalerated on this platform. The modification can be seen in kernel sources `fs/squashfs/crypto_wrapper.c`. So in order to extract and create the images, you need to modify your squashfs program to include this compressor.
 
-Also noting that the squashfs images don't seem to be signed/verified in any way. But I haven't tried to replace them yet.
+The squashfs images are not signed and can be replaced. Also `/var/md5sum_PKG.txt` doesn't seem to be actually used for anything.
+
+**NOTE**: after replacing the squashfs image you MUST run:
+```
+dtabk unsetenv preboot
+```
+to re-generate the Snapshot boot image on the next boot. Otherwise, the old squashfs image's metadata will still be saved in snapshot's memory and cause failures when reading it!
+
+For now replacement was only tested on `sqbin` image, `sqsony` image should be able to be replaced, but it could cause issues when doing it live, since `dtabk` lives there, and then we could not be able to unset `preboot`. Maybe we can copy it out to `/tmp` before?
 
 ### nandb
 `nandb` is 115343360 bytes (110 MB) in size, and it contains one EXT4 partition. It is used as the `/data` partition for Android   

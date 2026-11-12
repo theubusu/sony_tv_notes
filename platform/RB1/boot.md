@@ -98,7 +98,7 @@ The variable environment is placed in one of NAND system blocks with type `0x60`
 
 The [placeholder] store an offset to the actual value inside fixed env, the value is not stored here.
 
-- `EMK` - key involved in decryption of FRA, not sure if device unique
+- `EMK` - key involved in decryption of FRA, NOT device unique
 - `BDI` - selected BDI
 - `exttusize` - related to EXT partition (nandb1)
 - `extfreeblk1k` - related to EXT partition (nandb1)

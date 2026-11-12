@@ -43,11 +43,15 @@ hello from NAND
 
 So we can literally write to anything thats writeable on the filesystem using the manufactured file. However we should be very careful with the changes; anything goes wrong and the TV could be bricked forever.
 
-If squashfs replacement is confirmed, this can be used to directly replace one of the images at `/NAND`, although this might cause some unforseen troubles, because we will be rewriting an already mounted loop image with no additional verifications.
+This could be used to directly replace one of the images at `/NAND`, although this might cause some unforseen troubles, because we will be rewriting an already mounted loop image with no additional verifications. Also, it might seem we don't have a way to unset `preboot` which is crucial for our new image to work. For now i have two ideas for that:
+- overwrite `ssboot.fra` to 0 (could be dangerous, not tested)
+- copy one info FRA from real package, it unsets `preboot` at the end, as long as its from the same firmware it should be fine. (it also replaces release.pkg.info and md5sum(not important) )
 
 Another interesting thing to replace would be the writeable nginx config files at `/var/nginx` (`nginx.conf`, `sites-avaliable`, `sites-configured`)
 
 This could also possibly allow to create symlinks on the NAND filesystem.
+
+I tried to write an APK to `/android/data/app` using this method, but it fails for some reason (permissions? idk; it works when i run tar command manually from shell, and there is not an issue when writing outside of `/android`).
 
 ### Note about process
 The TV will reboot attempting to install the update after extracting the TAR, but since our TAR has no actual update packages, it will not actually install anything and boot normally, so it will get caught in a loop detecting the update on the USB again and rebooting, so after it reboots for the first time, you need to unplug the USB to prevent that.

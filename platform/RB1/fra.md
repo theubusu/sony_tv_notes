@@ -62,7 +62,7 @@ u32			SubEntryPoint
 Then follows `SecurityHeaderSize` of optional encrypted security header, its format is not known. Then the payload data follows.
 
 ## Encryption&Verification
-FRA decryption is done fully using hardware crypto processor. That means it is not possible to decrypt their data outside the TV (unless you somehow get the master keys and process from it). The decryption also depends on the `EMK` environment value(not sure if unique per device) and `ReleaseKey`+`InitialVector` from the file's header
+FRA decryption is done fully using hardware crypto processor. That means it is not possible to decrypt their data outside the TV (unless you somehow get the master keys and process from it). The decryption also depends on the `EMK` environment value and `ReleaseKey`+`InitialVector` from the file's header
 
 In `sonyrd.ko` the responsible function is `decrypt_data`. You can hook it from another kernel module and give it arbitrary data to decrypt, which is what i did (see `tool/decsrv`).
 
