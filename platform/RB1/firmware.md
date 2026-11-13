@@ -45,9 +45,16 @@ So we can literally write to anything thats writeable on the filesystem using th
 
 This could be used to directly replace one of the images at `/NAND`, although this might cause some unforseen troubles, because we will be rewriting an already mounted loop image with no additional verifications. Also, it might seem we don't have a way to unset `preboot` which is crucial for our new image to work. For now i have two ideas for that:
 - overwrite `ssboot.fra` to 0 (could be dangerous, not tested)
-- copy one info FRA from real package, it unsets `preboot` at the end, as long as its from the same firmware it should be fine. (it also replaces release.pkg.info and md5sum(not important) )
+- can use one of AD fra (android data package) seems like they are all empty, literally all they do is unset `preboot` ( and `subsystem_mode` in RB1)
 
-Another interesting thing to replace would be the writeable nginx config files at `/var/nginx` (`nginx.conf`, `sites-avaliable`, `sites-configured`)
+Another interesting thing to replace would be the writeable nginx config files at `/var/nginx` (`nginx.conf`, `sites-avaliable`, `sites-configured`)   
+Example: write this to `/var/nginx/sites-enabled/files.conf`
+```
+location /files/ {
+    alias /;
+}
+```
+Then you can access some files on the filesystem, but its limited since ngnix runs with uid 500 priveleges.
 
 This could also possibly allow to create symlinks on the NAND filesystem.
 

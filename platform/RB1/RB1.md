@@ -66,7 +66,7 @@ For more NAND layout info see `NAND.md`
 ## UART
 The UART connector pinout can be found in service manuals of this or similar platforms (see `common/uart.md`)
 
-The uart is quiet while the TV is running, but if you press `ESC` while powering the TV on, you will get dropped to the bootloader's password prompt:
+The uart is quiet while the TV is running by default, but if you press `ESC` while powering the TV on, you will get dropped to the bootloader's password prompt:
 
 ```
 A1949538A_9066794 : Ad7Q2v7V_a_bu0xwIkybb0nq :
@@ -221,8 +221,8 @@ Usage: dtdebugctrl [-OPTION] [PARAM] ...
              $dtdebugctrl -?
 ```
 
-### Kernel log
-The kernel console is set to `ttynull` if the `message` environment variable is not set to `on`. If it is set to `on`, it SHOULD print the console to UART. But even though i have seemingly been able to turn it to `on` (dtabk printenv message prints it), The kernel still seemingly doesnt recieve it and prints no logs. It could be a limitiation at ABK level.
+### UART log
+The kernel console is set to `ttynull` if the `message` environment variable is not set to `on`. You can turn it on by directly setting `message` to `on` via kernel, because `dtabk` prevents from setting it for some reason (along with `boot_option`). Once enabled, you will need to regenerate snapshot image by `unsetenv preboot` and reboot. Then you will see kernel and application logs on UART.
 
 ## Useful/Misc notes
 `info.txt` - output of some commands run from android (build.prop, id, mounts, root, dev, ps, dmesg, cpuinfo)
