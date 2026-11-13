@@ -256,6 +256,17 @@ Vega backend: OpenGL ES
 ### Access paths
 Access paths are not displayed
 
+
+## Notable/Interesting hardware
+### Projectors
+Some Sony projectors are based on Ayu2 SoC and RB1 software, for example:
+-  VPL-VW500ES (`sony_dtv0FA30A07A0A7_00002900`)
+-  VPL-VW5000ES (`sony_dtv0FA30A07A0A7_00022900`)
+
+They have the same firmware format and structure, and the FRA file can be decrypted using Ayu2 TV.
+
+It does not come with X2, software is mostly different than TV, also comes with Python 2.6 for some reason.
+
 ## Sources
 KDL-24W605A PKG4.600EUA   
 KDL-24W605A PKG4.612EUA

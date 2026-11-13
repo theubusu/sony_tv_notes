@@ -38,7 +38,7 @@ Note: the name of bin file does not matter at least in AZ1, it will choose the f
 - > Unknown 04
 - `0FA30A05A0A5` RB1    2013
 - `0FA40A06A0A6` RB2    2014
-- > Unknown 07
+- `0FA30A07A0A7` Projector 2013+
 - `0FA40A08A0A8` FMP-X7 2014
 - `0FA50A09A0A9` GN1    2015
 - `0FA60A0AA0AA` GN3    2016
