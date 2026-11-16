@@ -15,13 +15,15 @@ DTT_BASELINE=//14BOX/Panther/Exp/Release/TypeB-Release-GM14
 ## SoC
 SoC information from RB1 applies, the same are used.
 
+On high-end TVs and media player, additional "XVAD1" (Lyon, CXD4754GB) SoC is used. Not much is known about it yet
+
 ## NAND/eMMC
 - 1GB TSOP48 NAND (See RB1's `NAND.md`)
 - 4GB eMMC THGBMAG5A1JBAIR (in ENH mode(?), so data capacity is actually 2GB)
 
-eMMC seems to be used on some higher-end models. In both cases, they are fully encrypted.
+eMMC is used on some higher-end models. In both cases, they are fully encrypted.
 
-RB2T chassis seems to use 2 4GB eMMC's. One of them is mostly empty, its probably used for extra storage
+For models with Lyon, there are 2 eMMC's for each SoC.
 
 ### 2Mb SPI-ROM(SerialNorFlash) for eMMC boot
 In case of eMMC device, it will boot from an external SPI flash. The flash contains a small 0x1200 encrypted blob, which possiblys sets up the eMMC, and continues the boot from there.
@@ -70,6 +72,8 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/xsu
 
 ## Notable/Interesting hardware
 ### FMP-X5/FMP-X7/FMP-X10
+See `FMP-X5.md` for more info
+
 These 2014 4K media player models use the Ayu2 CPU and the RB2(based) software. 
 
 FMP-X5(Europe/Canada) never had software update released. [sm](https://elektrotanya.com/sony_fmp-x5_fmp-x5-1_4k-hd-mp_ver.1.0_rm.pdf/download.html)
