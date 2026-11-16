@@ -60,6 +60,18 @@ P4_SYNC_LABEL=@436883
 
 But since ngnix runs as UID 500, access to many files is limited. As you can see on the above dump, the latest(?) version for X5 is `PKG2.059EUP`
 
+Additional: nginx info (got by `/proc/self/exe` lol):
+```
+nginx version: nginx/1.2.9
+configure arguments: --with-cc='ccache arm-sony-linux-gnueabi-thumb2-dev-gcc-4.5.1-08000002 -L/home/muroya/p4/14TV/Ryu/Exp/develop/output/develop_EU/integ/export/target/thumb2/sony/usr/sony/lib/ -losal -D_GNU_SOURCE' --crossbuild=Linux: --prefix=/devel/usr --error-log-path=/tmp/nginx/nginx.log --conf-path=/var/nginx/nginx.conf --with-ipv6 --without-http_charset_module --without-http_empty_gif_module --without-http_fastcgi_module --without-http_geo_module --without-http_gzip_module --without-http_map_module --without-http_memcached_module --without-http_referer_module --without-http_scgi_module --without-http_split_clients_module --without-http_ssi_module --without-http_upstream_ip_hash_module --without-http_userid_module --without-http_uwsgi_module --without-http_autoindex_module --without-http_auth_basic_module --without-http_limit_req_module --add-module=chunkin-nginx-module-0.23 --add-module=headers-more-nginx-module-0.21/
+```
+Not sure if nginx can be used here
+
+## Network update
+The network update ID is `00605`, product: `Mediabox2G` (retrieved from `/tmp/mnt/ccf/iptv.nvm/bmmdata.tgz`)
+
+Update is no longer served.
+
 ## Apps
 ![picture](../../images/fmp-x5_home_screen.png)
 The home screen presents you with only 2 avaliable applications: Netflix and Video player.
@@ -67,6 +79,8 @@ The home screen presents you with only 2 avaliable applications: Netflix and Vid
 Netflix starts to the login screen (seemingly modern version) and promptly crashes a second later.
 
 The Video player runs on Android, and indeed it only allows you to play video files. USB only, no DLNA, also MKV files are not supported for some reason
+
+Help -> Help Guide is supposed to launch the browser with the online E-manual, but here it errors out "Internet browser will be closed due to internal error". It might be related to some SSL cert issue.
 
 ## Applicast
 The player downloads an index from: https://applicast.ga.sony.net/WsIndexes/MB2_WW.xml
