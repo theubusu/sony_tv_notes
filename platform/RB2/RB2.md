@@ -70,6 +70,19 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/xsu
 | BRB       | ISDB-LTN_NO-GIN     						|? |
 | JPA       | ISDB-JP_BASE        						|?|
 
+## Opera
+Version: 3.5  
+Build: LSDK6218   
+Platform: Linux   
+System: `armv7l, 2.6.35.14_nl-rb2`   
+Vega backend: OpenGL ES
+
+### Browser identification
+`Opera/9.80 (Linux armv7l; InettvBrowser/2.2 (00014A;SonyDTV140;0001;0001) FMPX5; CC/XAE) Presto/2.12.407 Version/12.50`
+
+### Access paths
+Access paths are not displayed
+
 ## Notable/Interesting hardware
 ### FMP-X5/FMP-X7/FMP-X10
 See `FMP-X5.md` for more info
@@ -84,3 +97,6 @@ FMP-X10(US) - latest software update `PKG2.071AAQ` released on 04/05/2017, was a
 
 ## Notes/Useful
 - Level 3 Confidential Service manual for RB2G - contains UART/JTAG pinouts, board schematic and connections of AYU2L(So also useful for RB1) - http://televid-sib.org/index.php?topic=22363.msg148626#msg148626
+
+## Sources
+FMP-X5 PKG2.059EUP
