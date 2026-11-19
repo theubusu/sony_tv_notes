@@ -201,6 +201,8 @@ By creating a `My Widgets` directory on your USB drive and putting widgets there
 | BRB       | ISDB-LTN_NO-GIN     |sony_dtv0FA30A05A0A5_00012400 |
 | JPA       | ISDB-JP_BASE        |sony_dtv0FA30A05A0A5_00002500|
 
+See `common/latest_fw.md` for download
+
 ## Logging
 ### Application log
 The TV's various applications and services have a custom logging setup using `/dev/dtlog`. To read these logs (which can be very useful), you can use the tool at `tool/dtlog.c`.

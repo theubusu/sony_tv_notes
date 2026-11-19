@@ -73,13 +73,15 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/qNe
 | EUB       | DVB-AEP-T2_MHP, DVB-AEP-C2_MHP   						|sony_dtv0FA20A02A0A2_00011100|
 | GAA       | DVB-TW_BASE, DVB-GA-T_BASE, DVB-GA-T_NO-NU, DTMB-HK_BASE, DVB-LTN_BASE      |sony_dtv0FA20A02A0A2_00001201|
 | GAB       | DVB-GA-T_NO-SKY, DVB-GA-T_NO-SKNU        						|? |
-| GAC       | DTMB-CN_BASE |?|
+| GAC       | DTMB-CN_BASE |sony_dtv0FA20A02A0A2_00021201|
 | AAA       | ATSC-KR_BASE, ATSC-LTN_BASE, ATSC-UC_BASE      			|sony_dtv0FA20A02A0A2_00001301|
 | BRA       | ISDB-LTN_BASE       						|sony_dtv0FA20A02A0A2_00001400 |
 | BRB       | ISDB-LTN_NO-GIN     						|sony_dtv0FA20A02A0A2_00011400 |
 | JPA       | ISDB-JP_BASE        						|sony_dtv0FA20A02A0A2_00001500|
 
-### High-end TV
+See `common/latest_fw.md` for download
+
+### AZ3SR (X900)
 | pkg       | dest | id      |
 | --------  | ---------- |---------- |
 | EUG | ? | sony_dtv0FA20A03A0A3_00071100 |

@@ -64,11 +64,13 @@ Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/xsu
 | EUA       | DVB-AEPT2S2_NO-NR, DVB-AEPT2S2_BASE       |sony_dtv0FA40A06A0A6_00003100|
 | EUB       | DVB-AEPT2S2_MHP   						|sony_dtv0FA40A06A0A6_00013100|
 | GAA       | DTMB-HK_BASE, DVB-TW_BASE, DVB-GAT2_BASE, DVB-GAT2_NO-IND, DVB-GAT2_NO-CI, DVB-LTN_BASE      |sony_dtv0FA40A06A0A6_00003201|
-| GAB       | DTMB-CN_BASE        						|? |
+| GAB       | DTMB-CN_BASE        						|sony_dtv0FA40A06A0A6_00013201 |
 | AAA       | ATSC-LTN_BASE, ATSC-UC_BASE      			|sony_dtv0FA40A06A0A6_00003301|
-| BRA       | ISDB-LTN_BASE       						|? |
-| BRB       | ISDB-LTN_NO-GIN     						|? |
-| JPA       | ISDB-JP_BASE        						|?|
+| BRA       | ISDB-LTN_BASE       						|sony_dtv0FA40A06A0A6_00003400 |
+| BRB       | ISDB-LTN_NO-GIN     						|sony_dtv0FA40A06A0A6_00013400 |
+| JPA       | ISDB-JP_BASE        						|sony_dtv0FA40A06A0A6_00003500|
+
+See `common/latest_fw.md` for download
 
 ## Opera
 Version: 3.5  
