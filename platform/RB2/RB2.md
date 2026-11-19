@@ -15,11 +15,11 @@ DTT_BASELINE=//14BOX/Panther/Exp/Release/TypeB-Release-GM14
 ## SoC
 SoC information from RB1 applies, the same are used.
 
-On high-end TVs and media player, additional "XVAD1" (Lyon, CXD4754GB) SoC is used. Not much is known about it yet
+On high-end 4K TVs and media player, additional "XVAD1" (Lyon, CXD4754GB) SoC is used. Not much is known about it yet
 
 ## NAND/eMMC
 - 1GB TSOP48 NAND (See RB1's `NAND.md`)
-- 4GB eMMC THGBMAG5A1JBAIR (in ENH mode(?), so data capacity is actually 2GB)
+- 4GB eMMC THGBMAG5A1JBAIR (see `emmc.md`) 
 
 eMMC is used on some higher-end models. In both cases, they are fully encrypted.
 
@@ -51,7 +51,7 @@ Internally also called „Genome” like in RB1, but its a different full-screen
 
 plus DUX (Discovery UX)
 
-## SEN/BIVL
+## AppliCast
 Indexes(EU): https://applicast.ga.sony.net/WsIndexes/RB2_EU.xml
 
 ## OSS

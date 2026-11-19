@@ -159,7 +159,7 @@ The platform has an Android subsystem. Read `android.md`
 Listing: https://oss.sony.net/Products/Linux/TV/KDL-55W905A.html   
 Kernel: [Sony link](https://prodgpl.blob.core.windows.net/download/TV/common/Lesm5juuv50ygMzqXgF7mg/kernel26.tgz) [Backup](https://s1.theubusu.xyz/0/uploads/sony%20kernels/2013_RB1.tgz)
 
-## SEN/BIVL
+## AppliCast
 Indexes(EU): https://applicast.ga.sony.net/WsIndexes/RB1_EU.xml
 
 The widgets downloaded by the TV are signed. Before laoding a widget, it downloads a `digest.txt` and `digest.sig` file first.

@@ -1,5 +1,9 @@
 # Latest firmware download
 
+All files have been verified. Note some PKG may be missing, especially for AZ2/AZ3SR.
+
+AZ1 firmware is not collected yet.
+
 ## AZ2 (2011)
 Update ID: `0FA10A01A0A1`
 

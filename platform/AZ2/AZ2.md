@@ -29,6 +29,8 @@ It turns out, AZ2/AZ3 use the same key deviration method as RB1, only as big-end
 ### Contents
 The decrypted data is a single FRA file (see RB1's `fra.md`). We cannot decrypt this for now, since we don't have access to the system (and RB1's Ayu2 cannot decrypt it, has different keys and/or procedure).
 
+Note: every AZ2/AZ3 firmware seems to have the same ReleaseKey field in the FRA, unlike RB1/RB2 which have a different one for every build.
+
 ### Exploitation
 We can't be sure how exactly the update is handled (not TAR file like on RB1/RB2), so not sure if any exploitation is possible. However because we can easily modify the header, it could lead to possible downgrade firmware or install from different model.
 
@@ -54,7 +56,7 @@ System: `mips, 2.6.23.17-alp_nl-`
 |Plug-in path|/sony/usr/sony/share/webbrowser/plugins|
 |User JavaScript folder|/dev/shm/opera_dir/userjs|
 
-## SEN/BIVL
+## AppliCast
 Indexes(EU): https://applicast.ga.sony.net/WsIndexes/AZ2_EU.xml
 
 ## OSS

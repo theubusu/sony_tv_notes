@@ -36,7 +36,7 @@ XMB+NSX
 - dumps of file `release.version` from both NAND dumps and also from below logs in the folder with same name
 - various UART logs from https://acassis.wordpress.com/2011/08/08/log_sony_bravia/ and https://acassis.wordpress.com/2014/10/08/more-sony-kdl-32ex405-logs/ in `logs.txt`
 
-## SEN/BIVL
+## AppliCast
 Indexes(EU): https://applicast.ga.sony.net/WsIndexes/AZ1_EU.xml
 
 ## OSS

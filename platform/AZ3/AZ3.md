@@ -55,12 +55,12 @@ Vega backend: DirectFB
 |User JavaScript folder|/sony/usr/sony/bin/$OPERA_DIR/userjs|
 |User styles folder|/dev/shm/opera_dir/mystyles|
 
-## SEN/BIVL
+## AppliCast
 Indexes(EU): https://applicast.ga.sony.net/WsIndexes/AZ3_EU.xml
 
 Interesting note:
 - https://github.com/CFSworks/nimue/issues/6
-Apparent bypass of widget signatures and run from USB. I wasn't able to confirm this.
+Apparent bypass of widget signatures and run from USB. You can in fact run the widgets from USB, same as on RB1, by creating a `My Widgets` folder on the disk. But I haven't been able to replicate a signature bypass.
 
 ## OSS
 Listing (latest saved): https://web.archive.org/web/20191019180723/http://oss.sony.net/Products/Linux/TV/KDL-55HX75G.html   
@@ -88,7 +88,7 @@ See `common/latest_fw.md` for download
 | AAZ | ? | sony_dtv0FA20A03A0A3_00061301 |
 
 ## Notable/interesting hardware 
-- Sony VAIO SVL241 series - AIO PC with built-in MONITOR function, X-Reality CPU XCD4733GB on a small board VTV Board PN 1-886-283-12 [yt](https://www.youtube.com/watch?v=dwibdIui7HA) [pa](https://notebookparts.com/products/sony-vaio-all-in-one-pc-svl241a11l-vtv-board-u-1-886-283-12-173343212)
+- Sony VAIO SVL24 series - AIO PC with built-in MONITOR function, X-Reality CPU CXD4733GB on a small board VTV Board PN 1-886-283-12 [yt](https://www.youtube.com/watch?v=dwibdIui7HA) [pa](https://notebookparts.com/products/sony-vaio-all-in-one-pc-svl241a11l-vtv-board-u-1-886-283-12-173343212) [oss](https://archive.org/download/sony-gpl-source/VAIO/Download/SVL24/)
 
 ## Sources
 KDL-55HX850 PKG2.120EUA
