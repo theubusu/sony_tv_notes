@@ -1,5 +1,5 @@
 # FMP-X5
-Notes for FMP-X5 4K media player, based on RB2 hardware/software. Info should be mostly applicable to all players in series.
+Notes specific for FMP-X5 4K media player, based on RB2 hardware/software. Info should be mostly applicable to all players in series.
 
 ## Series comparasion
 
@@ -84,7 +84,7 @@ Help -> Help Guide is supposed to launch the browser with the online E-manual, b
 
 It loads http://rd1.sony.net:80/help/hv/fmpx5/h_zz/. You can redirect this and fix the error by blocking communication to `xml.opera.com` and `certs.opera.com`, to load any page in the browser.
 
-## Applicast
+### Applicast
 The player downloads an index from: https://applicast.ga.sony.net/WsIndexes/MB2_WW.xml
 
 It is pretty empty and doesnt have anything useful/interesting. I tried modifing stuff to make video player launch another app, but it is no use, the video player launch is hardcoded in home menu: 
@@ -99,6 +99,33 @@ F1BoxFooterArea.prototype.onMediaPlayerSelected = function()
 };
 ```
 If we load appdatasource from RB1, it will fail to launch because RB1's syntax is different. So that means appLauncher is updated. But it is signed so it cant be manipulated
+
+In order to launch my android app installed by `em_user_hook` method, since the system does not provide any such way by default, i was forced to modify the home menu in `sqsony`'s `/usr/sony/bin/__system/EU/misc/GenomeHomeMenu/category/movies/F1BoxFooter.js` as follows:
+
+```js
+ {
+    name    : 'footer-ssh',
+    title   : "SSH",
+    icon    : 'pack:GenomeHomeMenu/img/PNTH_home_appIconLarge_VideoPlayer.png',
+    handler : this.onSshSelected
+}
+
+[...]
+
+F1BoxFooterArea.prototype.onSshSelected = function()
+{
+    appLauncher.launch(
+        'aapp://aais-app://com.teslacoilsw.quicksshd/com.teslacoilsw.quicksshd.QuickSSHD',
+        function(isAccepted, result) {
+            F1LOG.I('isAccepted: ' + isAccepted + ' result:' + result);
+        });
+};
+```
+
+After rewriting sqsony (by tar hack to place it and `em_user_hook` to mv it), this did indeed make a new SSH icon apperar on the home menu and I was able to launch it.
+
+There was also an unused `onAllAppsSelected` fucntion in the file, which I used first, and it did launch an all apps menu, but the android apps were not visible there, only Video Player and Music player.
+
 
 ## Hardware
 ![picture](../../images/fmp-x5_board_btm.jpg)
@@ -122,8 +149,8 @@ Not yet tested
 |CN3104         |Located next to SPI flash, has SPI interface "Writing connector at production". HDMI controller related.|
 |CN4002         |DEBUG LOG FOR LYON AND FRC|
 |CN4004         |MS for Lyon         |
-|CN4005         |JTAG for Lyon #1       |
-|CN4007         |JTAG for Lyon #2       |
+|CN4005         |JTAG for Lyon #1 (JTAG MIPS/ARM)       |
+|CN4007         |JTAG for Lyon #2 (JTAG ALLEGRO)      |
 |CN7001         |MS for Ayu2         |
 |CN7301         |Main TL-EX1 debug connector with Ayu2 and Lyon console        |
 |CN7310         |JTAG for Ayu2|

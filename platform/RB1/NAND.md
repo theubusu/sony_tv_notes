@@ -63,13 +63,21 @@ The squashfs images used have a custom compression definition where raw DEFLATE 
 
 The squashfs images are not signed and can be replaced. Also `/var/md5sum_PKG.txt` doesn't seem to be actually used for anything.
 
-**NOTE**: after replacing the squashfs image you MUST run:
+**NOTE**: after (or before) replacing the squashfs image you MUST run:
 ```
 dtabk unsetenv preboot
 ```
 to re-generate the Snapshot boot image on the next boot. Otherwise, the old squashfs image's metadata will still be saved in snapshot's memory and cause failures when reading it!
 
-For now replacement was only tested on `sqbin` image, `sqsony` image should be able to be replaced, but it could cause issues when doing it live, since `dtabk` lives there, and then we could not be able to unset `preboot`. Maybe we can copy it out to `/tmp` before?
+Replacement is confirmed on all images, to hijack the init process you will need to modify `sqsony`'s `/usr/sony/bin/dtInit` to do your stuff and launch the original dtInit after; for example:
+```sh
+#!/bin/sh
+echo INIT START[e]
+
+# ...
+
+exec /sony/usr/sony/bin/dtInit_orig "$@"
+```
 
 ### nandb
 `nandb` is 115343360 bytes (110 MB) in size, and it contains one EXT4 partition. It is used as the `/data` partition for Android   

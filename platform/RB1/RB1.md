@@ -52,9 +52,9 @@ Serial		: 0000000000000000
 
 ## Kernel
 `Linux version 2.6.35.14_nl-az4 (root@slave28.jp.sony.com) (gcc version 4.5.1 (20120207 (Sony CE Linux 8.1.0.3)) ) #1 SMP PREEMPT Mon Aug 8 13:28:53 JST 2016` (on `PKG4.600EUA`)
-- `-az4` suffix is interesting, this is successor to AZ3 so makes some sense , but should be `rb1`
+- you can see `az4`, It is reffered like this in some places instead of RB1
 
-It seems to come with some custom `snsc_security` system, mostly for protecting the chroot for Android.
+It comes with custom `snsc_security` system, mostly for protecting the chroot for Android.
 
 ## NAND
 - 1GB TSOP48 NAND (TC58NVG3S0FTAI0)
@@ -274,5 +274,5 @@ KDL-24W605A PKG4.600EUA
 KDL-24W605A PKG4.612EUA
 
 ##
-![picture](../../images/rb1fetch.png)
+![picture](../../images/rb1fetch.png)   
 ( ˊᵕˋ )°♡.

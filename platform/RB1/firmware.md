@@ -43,10 +43,12 @@ hello from NAND
 
 So we can literally write to anything thats writeable on the filesystem using the manufactured file. However we should be very careful with the changes; anything goes wrong and the TV could be bricked forever.
 
+### Image replacement
 This could be used to directly replace one of the images at `/NAND`, although this might cause some unforseen troubles, because we will be rewriting an already mounted loop image with no additional verifications. Also, it might seem we don't have a way to unset `preboot` which is crucial for our new image to work. For now i have two ideas for that:
 - overwrite `ssboot.fra` to 0 (could be dangerous, not tested)
 - can use one of AD fra (android data package) seems like they are all empty, literally all they do is unset `preboot` ( and `subsystem_mode` in RB1)
 
+### nginx
 Another interesting thing to replace would be the writeable nginx config files at `/var/nginx` (`nginx.conf`, `sites-avaliable`, `sites-configured`)   
 Example: write this to `/var/nginx/sites-enabled/files.conf`
 ```
@@ -56,9 +58,13 @@ location /files/ {
 ```
 Then you can access some files on the filesystem, but its limited since ngnix runs with uid 500 priveleges.
 
-This could also possibly allow to create symlinks on the NAND filesystem.
+### em_user_hook
+The easiest to get code execution from this which i found is by writing to `/NAND/em_user_hook.sh`.
 
-I tried to write an APK to `/android/data/app` using this method, but it fails for some reason (permissions? idk; it works when i run tar command manually from shell, and there is not an issue when writing outside of `/android`).
+This script is executed by the Exception monitor, when an exception happens. So once you make the system crash (for example; by playing a broken mkv file in mediaplayer), it will execute any code that is in that script.   
+However, it will not wait for the script to end, and there is relatively little time to execute any commands before the system goes down. But it is real code exec as root, the time can be used for example to safely unset preboot(if enabled), and `mv` a new squashfs .img.
+
+This can also be used to install APKs on RB2, by simply copying it to `/android/data/app`, it will be installed automatically in a while.
 
 ### Note about process
 The TV will reboot attempting to install the update after extracting the TAR, but since our TAR has no actual update packages, it will not actually install anything and boot normally, so it will get caught in a loop detecting the update on the USB again and rebooting, so after it reboots for the first time, you need to unplug the USB to prevent that.

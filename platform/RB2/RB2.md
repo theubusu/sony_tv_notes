@@ -5,7 +5,6 @@ RB2 SW Codename seems to be "Ryu" for TV, and "Panther" for box:
 DTT_BASELINE=//14TV/Ryu/Exp/Release/RB2-Release-20th
 ```
 ```
-(FMP-X7)
 DTT_BASELINE=//14BOX/Panther/Exp/Release/TypeB-Release-GM14
 ```
 
@@ -13,9 +12,14 @@ DTT_BASELINE=//14BOX/Panther/Exp/Release/TypeB-Release-GM14
 # Most information from RB1 should also apply to RB2.
 
 ## SoC
-SoC information from RB1 applies, the same are used.
+SoC information from RB1 applies, the same are used (Ayu2 on high-end/Ayu2L on mid/lower-end).
+
+For TVs with Ayu2, there is 2GB of RAM. For TVs with Ayu2L, there is 1GB like on RB1.
 
 On high-end 4K TVs and media player, additional "XVAD1" (Lyon, CXD4754GB) SoC is used. Not much is known about it yet
+
+## Kernel
+`Linux version 2.6.35.14_nl-rb2 (root@panther-jenkins4) (gcc version 4.5.1 (20120207 (Sony CE Linux 8.1.0.3)) ) #1 SMP PREEMPT Thu Apr 30 22:03:09 JST 2015` (on FMP-X5 `PKG2.059EUP`)
 
 ## NAND/eMMC
 - 1GB TSOP48 NAND (See RB1's `NAND.md`)
@@ -32,6 +36,8 @@ In case of eMMC device, it will boot from an external SPI flash. The flash conta
 This platform also has Android 4.0.4 based sub-system like RB1. See its notes for more info
 
 However, Crucial difference: The browser app is missing. So installing APKs that way like in RB1 isnt possible.
+
+To install APKs, you may use the `em_user_hook` method described in RB1's `firmware.md`.
 
 ## Firmware (Update)
 See RB1's `firmware.md`, RB2 uses the same firmware keys and format, also RB1 tv's can decrypt RB2 fra packages (because keys are SoC specific, and both use same SoC series).
@@ -102,3 +108,7 @@ FMP-X10(US) - latest software update `PKG2.071AAQ` released on 04/05/2017, was a
 
 ## Sources
 FMP-X5 PKG2.059EUP
+
+##
+![picture](../../images/rb2fetch.png)   
+( ˊᵕˋ )°♡.
