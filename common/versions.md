@@ -2,12 +2,12 @@
 
 | Prefix    | Meaning |
 | --------  | -------- |
-|DM		    |Digital(main) software|
-|WF	        |? Firmware|
+|DM		    |Main Prog|
+|WF	        |VPC Firmware|
 |DF	        |Digital Firmware|
 |DB         |Digital Boot/Bootloader|
 |YM         |Standby firmware|
-|M		    |Bootloader (ABK)|
+|M		    |Bootloader (Boot Prog)|
 |DD	        |NVM Data|
-|PK         |Unknown|
+|PK         |Pack Data|
 |AM		    |Android|

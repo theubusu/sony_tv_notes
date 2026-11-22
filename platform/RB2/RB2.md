@@ -12,11 +12,10 @@ DTT_BASELINE=//14BOX/Panther/Exp/Release/TypeB-Release-GM14
 # Most information from RB1 should also apply to RB2.
 
 ## SoC
-SoC information from RB1 applies, the same are used (Ayu2 on high-end/Ayu2L on mid/lower-end).
-
+SoC information from RB1 applies, the same are used (Ayu2 on high-end/Ayu2L on mid/lower-end).   
 For TVs with Ayu2, there is 2GB of RAM. For TVs with Ayu2L, there is 1GB like on RB1.
 
-On high-end 4K TVs and media player, additional "XVAD1" (Lyon, CXD4754GB) SoC is used. Not much is known about it yet
+On high-end 4K TVs and media player, additional "XVAD1" (Lyon, CXD4754GB) SoC is used - See `lyon.md`. Not much is known about it yet.
 
 ## Kernel
 `Linux version 2.6.35.14_nl-rb2 (root@panther-jenkins4) (gcc version 4.5.1 (20120207 (Sony CE Linux 8.1.0.3)) ) #1 SMP PREEMPT Thu Apr 30 22:03:09 JST 2015` (on FMP-X5 `PKG2.059EUP`)

@@ -142,8 +142,6 @@ SATA components/connectors are not present for FMP-X5.
 There is an unpopulated USB3.0 connector CN4100. Looks to be unused on all variants.
 
 ### Notable connections
-Not yet tested
-
 |Connector      | FMP-X5        |
 |---------------|---------      |
 |CN3104         |Located next to SPI flash, has SPI interface "Writing connector at production". HDMI controller related.|
@@ -156,6 +154,8 @@ Not yet tested
 |CN7310         |JTAG for Ayu2|
 
 Lyon has two seperate JTAG connections, labeled "JTAG MIPS/ARM", and "JTAG ALLEGRO"
+
+The main uart TX of CN7301 is annoyingly shared with some boot selection strap, so when it is connected the unit will not boot. So you must connect TX after it has already booted. Then you can restart/crash on linux.
 
 ## Service menus
 ### Self Check Diagnosis
