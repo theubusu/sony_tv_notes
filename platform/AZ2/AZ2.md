@@ -15,7 +15,7 @@ RAM: 512MB DDR3
 ## NAND
 - 256MB BGA63 OneNAND
 
-There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA63 is expensive). Therefore, its not known whether the NAND is encrypted.
+The NAND is fully encrypted, in a similar manner to RB1. Therefore a dump is not very useful.
 
 ## Firmware
 The format is the same as described in AZ1's `firmware.md` (see `tool/pkg_dec.py` for auto decrypt)

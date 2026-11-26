@@ -27,7 +27,7 @@ RAM: 512MB DDR3
 - 512MB BGA63 OneNAND `KFM4G16Q4B-BEB1`/`TC58RYG2S5F` (AEP/UC/PA/TW/HK/BR)
 - 256MB BGA63 OneNAND `TC58RYG1S8EBAIA` (JP/CHD)
 
-There is not a single public NAND dump of any TV on this platform that i could find (probably because OneNAND programmers+BGA63 is expensive). Therefore, its not known whether the NAND is encrypted.
+Like AZ2, the NAND is fully encrypted. Therefore a dump is not very useful.
 
 ## Firmware
 See AZ2's firmware section.

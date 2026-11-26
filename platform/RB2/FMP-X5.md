@@ -126,6 +126,11 @@ After rewriting sqsony (by tar hack to place it and `em_user_hook` to mv it), th
 
 There was also an unused `onAllAppsSelected` fucntion in the file, which I used first, and it did launch an all apps menu, but the android apps were not visible there, only Video Player and Music player.
 
+I was annoyed by the menu being so useless, so since it is in JS, you can quite easily modify it to add more functionality   
+![picture](../../images/fmp-x5_custom_home.png)
+   
+As you can see on the picture, I also discovered the full web browser (working), and native media player(broken)
+
 
 ## Hardware
 ![picture](../../images/fmp-x5_board_btm.jpg)
