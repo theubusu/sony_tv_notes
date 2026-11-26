@@ -59,12 +59,11 @@ location /files/ {
 Then you can access some files on the filesystem, but its limited since ngnix runs with uid 500 priveleges.
 
 ### em_user_hook
-The easiest to get code execution from this which i found is by writing to `/NAND/em_user_hook.sh`.
+The way to get code execution from this which i found is by writing to `/NAND/em_user_hook.sh`.
 
 This script is executed by the Exception monitor, when an exception happens. So once you make the system crash (for example; by playing a broken mkv file in mediaplayer), it will execute any code that is in that script.   
-However, it will not wait for the script to end, and there is relatively little time to execute any commands before the system goes down due to a watchdog timeout (note: It might be possible to stop it's timer, needs to be investigated).
 
-But it is real code exec as root, the time can be used for example to safely unset preboot(if enabled), and `mv` a new squashfs .img.
+However, it will not wait for the script to end, and there is relatively little time to execute any commands before the system goes down due to a watchdog timeout by default. But, you can disable the watchdog, there is a node `/dev/wdTimer` which would take ioctl, but it will be blocked, so you need to make a kernel module to disable it by calling into `wdTimer_Stop` directly. Then you can run anything you need, for example a telnetd.
 
 To make this easier to work with you can use a script like this to execute from USB:
 ```sh
