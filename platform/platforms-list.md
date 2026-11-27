@@ -1,6 +1,4 @@
-# Other Platforms
-
-List, timeline mapping of other platforms of interest by year,region + notes. Note that this is NOT a complete list, many mapping is missing, espacially for Japan. And some series are excluded because of no interest
+List, timeline mapping of platforms of interest by year,region + notes. Note that this is NOT a complete list, many mapping is missing, espacially for Japan. And some series are excluded because of no interest
 
 America mapping based on OSS release:   
 https://web.archive.org/web/20120717055235/https://products.sel.sony.com/opensource/source_tv.shtml   
@@ -13,6 +11,25 @@ Japan mapping based on this useful chart website:
 https://avchart.g3.xrea.com/lctv/lctv07so.html   
 And update releases:   
 https://www.sony.jp/bravia/update/
+
+## Platform types
+There are three main types of the platforms of interest:
+### [main] EMMA/Sony Linux
+This type was first seen on SF1EG in 2004, and was used in Japanese TVs (and some US) until 2010, when this platform became the main global one (AZ1), since then it is used on all region TVs. Following, it was also used with non-EMMA Sony CPUs (AZ2-RB2). See files of respective platform for more info. The firmware files (.bin) are dfwrap encrypted container with FRZ/FRA inside.
+
+### EMMA RTOS
+Before 2010, this was the type used on most European models. It utilizes NEC EMMA series cpu, but runs a custom RTOS instead of Linux. This is described in more detail in `non-linux.md`. The firmware files used are SPF/SPF2.
+
+### Xilleon Linux
+Before 2010, this was the type used on most American models. It utilizes ATI/AMD Xilleon Series CPUs, with Linux. Not much is known about this platform yet. It uses .p08/.p09 firmware Package files, or .d05/.d06 for older.
+
+### Others
+Platforms out of scope include:
+- MediaTek platform (see `mediatek.md`), with .pkg update files
+- NXP platform (see `nxp.md`), with .upg update files
+- Any bare metal boring non Linux non rtos stuff
+
+# Platforms list
 
 ## 2004
 ### SP1 (America)
